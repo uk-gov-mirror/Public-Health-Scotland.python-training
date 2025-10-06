@@ -17,11 +17,8 @@ runtime: shiny_prerendered
 
 # Include packages here that are required throughout the training
 
-#install.packages("learnr")
-library(learnr)         # Required to build the Shiny app
-#install.packages("gradethis")
-library(gradethis)      # Required for specific code checking and specific feedback
-#install.packages("reticulate")
+library(learnr)
+library(gradethis)
 library(reticulate)
 
 knitr::opts_chunk$set(echo = FALSE)
@@ -29,6 +26,10 @@ knitr::opts_chunk$set(echo = FALSE)
 tutorial_options(
   exercise.checker = gradethis::grade_learnr
 )
+
+reticulate::virtualenv_create(envname = "pyenv")
+reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.1"))
+reticulate::use_virtualenv("pyenv", required = TRUE)
 ```
 
 
@@ -47,7 +48,9 @@ knitr::include_graphics("images/phs-logo.png")
 
 ## Introduction
 
-Welcome to an introduction to python. This course is designed as a self-led introduction to R Markdown for anyone in Public Health Scotland.
+Welcome to an introduction to python. This course is designed as a self-led introduction to python for anyone in Public Health Scotland. It covers fundamental knowledge such as various data types (e.g. numbers, strings and boolean), how to write functions, importing and exporting datasets and data wrangling. You can explore python by going through the course and experimenting coding in the embedded code chunks. 
+
+Here is the short video of a quick introduction to python: ![](https://www.youtube.com/watch?v=xkZMUX_oQX4)
 
 <div class="info_box">
   <h4>Course Info</h4>
