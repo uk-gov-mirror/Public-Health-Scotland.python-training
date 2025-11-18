@@ -27,9 +27,9 @@ tutorial_options(
   exercise.checker = gradethis::grade_learnr
 )
 
-reticulate::virtualenv_create(envname = "pyenv")
-reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.1"))
-reticulate::use_virtualenv("pyenv", required = TRUE)
+reticulate::virtualenv_create(envname = "venv313")
+reticulate::virtualenv_install("venv313", packages = c("pandas==2.3.3"))
+reticulate::use_virtualenv("venv313", required = TRUE)
 ```
 
 
@@ -64,36 +64,22 @@ Here is the short video of a quick introduction to python: ![](https://www.youtu
 
 ### What is Python?
 
-Python is a powerful general purpose programming language with widespread use in many application domains. Python is open source and free to use, and available for all major operating systems.
+- Python is a powerful general purpose programming language with widespread use 
+in many application domains. 
 
-### How does Python run?
+- Python is open source and free to use, and available for all major operating 
+systems.
 
-Traditionally, when a Python script is run, the entire script is interpreted and run from the top down. 
+- Supported on PHS Posit Workbench. 
 
-```{python runtime, eval = FALSE, echo = TRUE}
-a = 15
-b = 10
-c = a + b 
-print(c)
-```
-
-When the above Python script is run, the entire script will be run from the top down, resulting in an output of `25`.
-
-There are a number of advantages to having Python scripts run this way. To name a few:
-
-* The script has a sequential flow
-* It is easier to debug
-* It is clearer and more readable
-
-However, there are a number of ways to run individual lines of code within a Python script, should that be preferred. In this course, we will touch upon `Jupyter Notebook` in the *IDE* section, where this can be accomplished. 
-
+- Learning Python opens up professional development opportunities. 
 
 
 ## IDE
 
 ### Jupyter Notebook
 
-There are several environments where you can run Python codes, such as "JupyterLab", "Jupyter Notebook". In this training course, we will use “Jupyter Notebook”. 
+There are several environments where you can run Python code, such as "JupyterLab", "Jupyter Notebook".
 
 Jupyter Notebook is designed for the easy integration of text and Python programming. It provides a more interactive workflow for Python programming, analysis and reporting. Some of its key features are:
 
@@ -107,7 +93,7 @@ Jupyter Notebook is designed for the easy integration of text and Python program
 
 #### Open a New Jupyter Notebook
 
-We can access "Jupyter Notebook" on [Posit Workbench](https://pwb.publichealthscotland.org/). After signing in, click on New Session and a diaglog box will pop up. Click on Editor and select "Jupyter Notebook" from the drop down list, and then Start Session. 
+We can access "Jupyter Notebook" on [Posit Workbench](https://pwb-prod.publichealthscotland.org/). After signing in, click on New Session and a diaglog box will pop up. Click on Editor and select "Jupyter Notebook" from the drop down list, and then Start Session. 
 
 ```{r openpynb, fig.align='center', out.width="60%"}
 knitr::include_graphics("images/python-pwb.png")
@@ -189,13 +175,53 @@ Then press *Shift + Enter* to finish.
 knitr::include_graphics("images/markdown-example2.PNG")
 ```
 
-#### Python Library
-
-Python library is a collection of functions and methods that allows you to perform lots of actions without writing your own code. For example, “pandas” is a Python library for data manipulation and analysis, which is used a lot in this training guidance. 
 
 ## Foundations
 
 This section will walk you through some of the foundational knowledge of Python, including structure, style, and key data types.
+
+We’re going to start with a high-level overview of programming concepts which will help lay the foundations for building your python skills. We’ll then build on these concepts with the specific syntax in python. This graphic shows the structure of the concepts and how they come together to form a program:
+
+<div class="supporting-image-left">
+```{r foundations-buildingblocks, echo=FALSE, fig.align='center', out.width="75%"}
+knitr::include_graphics("images/foundations-buildingblocks.png")
+```
+</div>
+
+1. **Basic data types** - representing fundamental data, like numbers and text.
+
+2. **Complex data types** - taking basic data types and forming more complex, composite data types, e.g. tables.
+
+3. **Variables** - named storage to track "objects" across a program.
+
+4. **Statements** - a complete line of code, made of expressions and operators.
+
+5. **Control Flow** - branching (if statements) and iteration (loops).
+
+6. **Functions** - reusable chunks of code that can take inputs and give outputs.
+
+</br>
+
+### How does Python run?
+
+Traditionally, when a Python script is run, the entire script is interpreted and run from the top down. 
+
+```{python runtime, eval = FALSE, echo = TRUE}
+a = 15
+b = 10
+c = a + b 
+print(c)
+```
+
+When the above Python script is run, the entire script will be run from the top down, resulting in an output of `25`.
+
+There are a number of advantages to having Python scripts run this way. To name a few:
+
+* The script has a sequential flow
+* It is easier to debug
+* It is clearer and more readable
+
+However, there are a number of ways to run individual lines of code within a Python script, should that be preferred. In this course, we will touch upon `Jupyter Notebook` in the *IDE* section, where this can be accomplished. 
 
 ### Structure
 
@@ -231,7 +257,13 @@ knitr::include_graphics("images/r_coding_cases.png")
 
 ### Numbers
 
-There are 3 main types of numbers that can be declared in Python. 
+There are 3 main types of numbers that can be declared in Python.
+
+1. **Integer** - Whole numbers, positive or negative, without a fractional part. They have unlimited precision in Python 3.
+
+2. **Floating point** - Real numbers with a fractional part, denoted by a decimal point or scientific notation.
+
+3. **Complex** - Numbers with a real and an imaginary component, written as `a + bj`, where `a` is the real part and `b` is the imaginary part.
 
 ```{python numbers, eval = FALSE, echo = TRUE}
 age = 27 # Integers
@@ -401,7 +433,7 @@ my_string = 'Hello, World!'
 print(my_string)
 ```
 
-## Functions
+## Functions & Libraries
 
 In Python, functions are a block of organised and reusable code which performs a specific task.
 
@@ -478,6 +510,10 @@ def add(a,b,c):
 result = add(1,2,3)
 print(result)
 ```
+
+#### Python Library
+
+Python library is a collection of functions and methods that allows you to perform lots of actions without writing your own code. For example, “pandas” is a Python library for data manipulation and analysis, which is used a lot in this training guidance. 
 
 
 ## Control Flow & Iteration{#comparisonoperators}

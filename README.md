@@ -10,8 +10,8 @@ build the shiny app, whilst `reticulate` is required for running embedded python
 sessions.
 
 ``` r
-install.packages(learnr)
-install.packages(reticulate)
+install.packages("learnr")
+install.packages("reticulate")
 ```
 
 - `gradethis` can be installed from GitHub. It is required for specific code 

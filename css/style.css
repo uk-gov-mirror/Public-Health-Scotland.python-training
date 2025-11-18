@@ -57,3 +57,9 @@ img {
   border-radius: 5px;
   padding: 10px;
 }
+
+.supporting-image-left {
+  float: left;
+  width: 400px;
+  padding-top: 10px;
+}
