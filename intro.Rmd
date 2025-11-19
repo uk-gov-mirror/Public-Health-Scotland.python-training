@@ -27,9 +27,9 @@ tutorial_options(
   exercise.checker = gradethis::grade_learnr
 )
 
-reticulate::virtualenv_create(envname = "venv313")
-reticulate::virtualenv_install("venv313", packages = c("pandas==2.3.3"))
-reticulate::use_virtualenv("venv313", required = TRUE)
+reticulate::virtualenv_create(envname = "pyenv")
+reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))
+reticulate::use_virtualenv("pyenv", required = TRUE)
 ```
 
 
