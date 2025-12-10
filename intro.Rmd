@@ -95,7 +95,7 @@ knitr::include_graphics("images/vs-code.png")
 
 #### Opening files and folders
 
-Once your session opens you can go ahead and open the folder by either clicking open folder in the explorer pain or using the keyboard shortcut (Ctrl+ O). You can create a new file by pressing the following button shown in the image or using the keyboard shortcut (Ctrl + Alt + Window + N). Python files are .py files.
+Once your session opens you can go ahead and open the folder by either clicking open folder in the explorer pain or using the keyboard shortcut (Ctrl+ O). You can create a new file by pressing the following button shown in the image. Python files are .py files.
 
 ```{r vscodefile, fig.align='center', out.width="60%"}
 knitr::include_graphics("images/vs-code-file.png")
@@ -116,7 +116,7 @@ python your_file_name.py
 
 Another way to run the whole script is to use the run button at the top of the editor. This is essentially the equivalent of pressing source to run a script in R studio.
 
-**2. Running Code Snippets interactively**
+**2. Running Code Snippets Interactively**
 
 If you wish to run snippets of your code or run it line by line you can do this using an interactive notebook. By pressing Shift + Enter on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press Shift + Enter. This is very similar to running code in R studio by pressing ctrl + enter.
 
@@ -129,6 +129,8 @@ You can also use Jupyter Notebooks by creating a .ipynb file. Each cell can be e
 ```{r vscodenotebook, fig.align='center',out.width="100%"}
 knitr::include_graphics("images/vs-code-notebook.png")
 ```
+
+Note that running code interactively does require certain extensions to be installed. 
 
 ### Jupyter Notebook
 
