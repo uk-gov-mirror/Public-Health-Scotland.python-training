@@ -77,6 +77,59 @@ systems.
 
 ## IDE
 
+### VS Code
+
+Visual Studio Code is an open-source code editor that supports multiple programming languages including Python and R and is highly customisable with extensions. For the purposes of this course we will focus on python. 
+
+**Please note this is only a brief introduction on VS Code. For detailed instructions on how to set up VS code and use Python in Posit Workbench please see [VS Code Setup instructions](https://github.com/Public-Health-Scotland/vscode_prep). These instructions include setting up extensions, creating environments, installing packages, and using version control. Please follow these instructions if it is your first time using VS code on Posit Workbench.**
+
+
+#### Getting Started
+
+We can access VS Code on [Posit Workbench](https://pwb-prod.publichealthscotland.org/) the same way we access R studio. After signing in, click on New Session and a diaglog box will pop up. Click on VS code from the options at the start, select your memory requirements, and then Start Session. 
+
+```{r vscode, fig.align='center', out.width="60%"}
+knitr::include_graphics("images/vs-code.png")
+```
+</br>
+
+#### Opening files and folders
+
+Once your session opens you can go ahead and open the folder by either clicking open folder in the explorer pain or using the keyboard shortcut (Ctrl+ O). You can create a new file by pressing the following button shown in the image or using the keyboard shortcut (Ctrl + Alt + Window + N). Python files are .py files.
+
+```{r vscodefile, fig.align='center', out.width="60%"}
+knitr::include_graphics("images/vs-code-file.png")
+```
+</br>
+
+
+#### Running code
+
+There are several ways to run code in VS code:
+
+**1. Running an entire script**
+
+To execute the full script you can type the following into the terminal and press enter. The easiest way to open a new terminal is the keyboard shortcut (Ctrl + Shift + C).
+```{python terminal, eval = FALSE, echo = TRUE}
+python your_file_name.py
+```
+
+Another way to run the whole script is to use the run button at the top of the editor. This is essentially the equivalent of pressing source to run a script in R studio.
+
+**2. Running Code Snippets interactively**
+
+If you wish to run snippets of your code or run it line by line you can do this using an interactive notebook. By pressing Shift + Enter on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press Shift + Enter. This is very similar to running code in R studio by pressing ctrl + enter.
+
+```{r vscodeinteractive, fig.align='center',out.width="100%"}
+knitr::include_graphics("images/vs-code-interactive.png")
+```
+
+You can also use Jupyter Notebooks by creating a .ipynb file. Each cell can be executed individually using Shift + Enter or by pressing the run button. This allows you to create code or markdown snippets. This will look like the following.
+
+```{r vscodenotebook, fig.align='center',out.width="100%"}
+knitr::include_graphics("images/vs-code-notebook.png")
+```
+
 ### Jupyter Notebook
 
 There are several environments where you can run Python code, such as "JupyterLab", "Jupyter Notebook".
