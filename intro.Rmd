@@ -86,7 +86,7 @@ Visual Studio Code is an open-source code editor that supports multiple programm
 
 #### Getting Started
 
-We can access VS Code on [Posit Workbench](https://pwb-prod.publichealthscotland.org/) the same way we access R studio. After signing in, click on New Session and a diaglog box will pop up. Click on VS code from the options at the start, select your memory requirements, and then Start Session. 
+We can access VS Code on [Posit Workbench](https://pwb-prod.publichealthscotland.org/) the same way we access RStudio. After signing in, click on 'New Session' and a dialog box will pop up. Click on 'VS Code' from the options at the start, select your memory requirements, and then 'Start Session'. 
 
 ```{r vscode, fig.align='center', out.width="60%"}
 knitr::include_graphics("images/vs-code.png")
@@ -95,7 +95,7 @@ knitr::include_graphics("images/vs-code.png")
 
 #### Opening files and folders
 
-Once your session opens you can go ahead and open the folder by either clicking open folder in the explorer pain or using the keyboard shortcut (Ctrl+ O). You can create a new file by pressing the following button shown in the image. Python files are .py files.
+Once your session opens you can go ahead and open the folder by either clicking on the folder in the explorer pain or using the keyboard shortcut (`Ctrl` + `O`). You can create a new file by pressing the 'New File...' button shown in the image.
 
 ```{r vscodefile, fig.align='center', out.width="60%"}
 knitr::include_graphics("images/vs-code-file.png")
@@ -105,26 +105,26 @@ knitr::include_graphics("images/vs-code-file.png")
 
 #### Running code
 
-There are several ways to run code in VS code:
+There are several ways to run code in VS Code:
 
 **1. Running an entire script**
 
-To execute the full script you can type the following into the terminal and press enter. The easiest way to open a new terminal is the keyboard shortcut (Ctrl + Shift + C).
+To execute the full script you can type the following into the terminal and press enter. The easiest way to open a new terminal is the keyboard shortcut (`Ctrl` + `Shift` + `C`).
 ```{python terminal, eval = FALSE, echo = TRUE}
 python your_file_name.py
 ```
 
-Another way to run the whole script is to use the run button at the top of the editor. This is essentially the equivalent of pressing source to run a script in R studio.
+Another way to run the whole script is to use the run button at the top of the editor. This is essentially the equivalent of pressing source to run a script in RStudio.
 
-**2. Running Code Snippets Interactively**
+**2. Running code snippets interactively**
 
-If you wish to run snippets of your code or run it line by line you can do this using an interactive notebook. By pressing Shift + Enter on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press Shift + Enter. This is very similar to running code in R studio by pressing ctrl + enter.
+If you wish to run snippets of your code or run it line by line you can do this using an interactive notebook. By pressing `Shift` + `Enter` on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press `Shift` + `Enter`. This is very similar to running code in RStudio by pressing `Ctrl` + `Enter`.
 
 ```{r vscodeinteractive, fig.align='center',out.width="100%"}
 knitr::include_graphics("images/vs-code-interactive.png")
 ```
 
-You can also use Jupyter Notebooks by creating a .ipynb file. Each cell can be executed individually using Shift + Enter or by pressing the run button. This allows you to create code or markdown snippets. This will look like the following.
+You can also use Jupyter Notebooks by creating a .ipynb file. Each cell can be executed individually using `Shift` + `Enter` or by pressing the run button. This allows you to create code or markdown snippets. This will look like the following.
 
 ```{r vscodenotebook, fig.align='center',out.width="100%"}
 knitr::include_graphics("images/vs-code-notebook.png")
