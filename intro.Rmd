@@ -693,8 +693,8 @@ borders2.head()
 It is also possible to rearrange the columns within an imported dataframe. The columns in the example above can be rearranged using the following code:
 
 ```{python csv-read-columns2, exercise = TRUE, exercise.setup = "pandas-setup"}
-# Rearrange the columns
-borders3 = borders2[['URI', 'Specialty', 'HospitalCode']]
+# Rearrange the columns by supplying multiple column names in a list using the inner square brackets.
+borders3 = borders2[['URI', 'Specialty', 'HospitalCode']] 
 
 # Check the first few rows of the dataset. Default is 5 rows. 
 borders3.head()
