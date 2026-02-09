@@ -700,41 +700,6 @@ borders3 = borders2[['URI', 'Specialty', 'HospitalCode']]
 borders3.head()
 ```
 
-Once the dataframe has been read in, you can delete a specific column (or columns) that you do not need using **del** command:
-
-```{python delete-column, exercise = TRUE, exercise.setup = "pandas-setup"}
-# Delete URI column
-del borders2["URI"]
-
-# Check the first few rows of the dataset. Default is 5 rows. 
-borders2.head()
-```
-
-### Knowledge Check
-
-```{r example-quiz}
-quiz(
-  question("[Question]",
-    answer("[Incorrect answer]", correct = FALSE),
-    answer("[Incorrect answer with feedback]", correct = FALSE, message = "[Specific feedback.]"),
-    answer("[Correct answer]", correct = TRUE),
-    incorrect = "[General feedback for any incorrect answer.]",
-    allow_retry = TRUE,
-    random_answer_order = TRUE
-  )
-)
-```
-
-### Code Exercise
-
-```{r example-code-q, exercise=TRUE}
-# Hello World example
-hello_world <- "Hello World"
-
-print(hello_world)
-```
-
-
 ## Explore
 
 ### Mean/Median & Summary
@@ -1146,18 +1111,25 @@ borders['number_of_eyebrows'] = 2
 borders.head()
 ```
 
-Sometimes we want to delete certain columns. We can use `drop` method to do so. 
+Sometimes we want to delete certain columns. We can use `drop` method to do so.
 
 * Removing a column by label: 
 
-```{python remove-column1, eval = FALSE, echo = TRUE}
-df = df.drop(list_of_column_labels, axis = 1) 
-# axis = 1 specifies you are removing a column
+```{python delete-column1, eval = FALSE, echo = TRUE}
+df = df.drop('column_name', axis = 1)
+```
+
+where `1` is the *axis* number (`0` for rows and `1` for columns).
+
+Or `drop` method accepts `index/columns` keywords as an alternative to specifying the axis. So we can now just do:
+
+```{python delete-column2, eval = FALSE, echo = TRUE}
+df = df.drop(columns = ['column_nameA', 'column_nameB'])
 ```
 
 Let's load the first 10 rows of `borders`, and remove the first two columns `URI` and `HospitalCode` by their column labels (column names):
 
-```{python delete-column1, exercise = TRUE, exercise.setup = "pandas-setup"}
+```{python delete-column-example1, exercise = TRUE, exercise.setup = "pandas-setup"}
 borders_10 = borders.head(10)
 
 borders_10.drop(['URI', 'HospitalCode'], axis = 1)
@@ -1165,17 +1137,26 @@ borders_10.drop(['URI', 'HospitalCode'], axis = 1)
 
 * Removing a column by index position: 
 
-```{python remove-column2, eval = FALSE, echo = TRUE}
+```{python delete-column3, eval = FALSE, echo = TRUE}
 df = df.drop(df.columns[list_of_column_positions], axis = 1) 
-# axis = 1 specifies you are removing a column
 ```
 
 Let's replicate the last example by using this method:
 
-```{python delete-column2, exercise = TRUE, exercise.setup = "pandas-setup"}
+```{python delete-column-example2, exercise = TRUE, exercise.setup = "pandas-setup"}
 borders_10 = borders.head(10)
 
 borders_10.drop(borders_10.columns[[0, 1]], axis = 1)
+```
+
+Besides, if you want to delete the column without having to reassign `df` you can do:
+
+```{python delete-column4, eval = FALSE, echo = TRUE}
+# Delete a single column
+df.drop('column_name', axis = 1, inplace = True)
+
+# Delete multiple columns
+df.drop(['column_nameA', 'column_nameB'], axis = 1, inplace = True)
 ```
 
 ## Wrangle – Part 2
