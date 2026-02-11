@@ -132,7 +132,7 @@ In order to use VS Code you first need to install extensions. Extensions are ess
 
 3. Within this folder is a script called `install_extensions.sh` which will automate the installation process. It already contains the extensions you will need to get started but it can be modified depending on your needs. To execute this script enter `bash install_extensions.sh vscode` in the terminal.
 
-4. Next, you will need to reload your VS Code to make sure your extensions have loaded. Press `Ctrl` + `Shift` + `P` and search "Developer: Reload Window".
+4. You will see Installation completed! in your terminal. This means everything has worked and the extensions should have been installed. Go to Extensions icon on Activity Bar and you should see a list of the extensions installed.
 
 
 ##### Environments
