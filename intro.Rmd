@@ -74,8 +74,128 @@ systems.
 
 - Learning Python opens up professional development opportunities. 
 
-
 ## IDE
+
+### VS Code
+
+Visual Studio Code is an open-source code editor that supports multiple programming languages including Python and R and is highly customisable with extensions. For the purposes of this course we will focus on Python. 
+
+#### Getting Started
+
+1. We can access VS Code on [Posit Workbench](https://pwb-prod.publichealthscotland.org/) the same way we access RStudio.
+2. After signing in, click on "New Session" and a dialog box will pop up.
+3. Click on "VS Code" from the options at the start.
+4. Select your memory requirements.
+5. Click on "Start Session". 
+
+```{r vscode, fig.align='center', out.width="60%"}
+knitr::include_graphics("images/vs-code.png")
+```
+</br>
+
+##### Layout of the Interface
+
+The layout of the VS Code interface can be divided into 6 different parts:
+
+* **Activity Bar**: This is located on the far left side of the interface. This lets you access different options and switch between different views on the primary side bar.
+* **Primary Side Bar**: This is located on the left side of the interface to the right of the activity bar. It contains different views like the Explorer, Search, and Source Control to assist you while working on your project.
+* **Editor**: This is located in the center of the interface and is the main place to edit your files. You can open as many editors as you like side by side vertically and horizontally.
+* **Panel**: This is located at the bottom of the interface below the editor. This contains output, debug information, errors and warnings, and an integrated terminal. To open the terminal the keyboard shortcut is `Ctrl` + `'`.
+* **Command Palette**: This is located right at the top of the interface. The keyboard shortcut `Ctrl` + `Shift` + `P` brings up the Command Palette and provides access to commands.
+* **Status Bar**: This is located right at the bottom of the interface and provides information about the open project.
+
+```{r vscodeoverview, fig.align='center', out.width="100%"}
+knitr::include_graphics("images/vs-code-overview.png")
+```
+
+##### Opening files and folders
+
+Once your session opens you can go ahead and open a folder by either clicking on the folder in the explorer pane and then "Open Folder". You can open a file using the keyboard shortcut (`Ctrl` + `O`). You can create a new file by pressing the "New File" button located to the right of your folder name.
+
+```{r vscodefile, fig.align='center', out.width="60%"}
+knitr::include_graphics("images/vs-code-file.png")
+```
+The file path for your home directory (`~` in R Studio) is `/mnt/homes/your_username/`. The stats drive can be accessed the same as R Studio: '/conf/...'.
+</br>
+
+#### Setting Up
+
+Before you start using VS Code you must set up a few different aspects. This section will cover extensions and environments. Although this section should be sufficient for getting set up, for full detailed instructions please see: [VS Code Setup instructions](https://github.com/Public-Health-Scotland/vscode_prep). These instructions include setting up extensions, creating environments, installing packages, using version control, and other hints and tips.
+
+##### Extensions
+
+In order to use VS Code you first need to install extensions. Extensions are essentially add-ons that allow you to customise what VS Code can do.  You can install extensions individually however for getting started it is recommended that you do the following: 
+
+1. Clone the following repo that can be found [here](https://github.com/Public-Health-Scotland/vscode_prep). This can be done by entering the following into the terminal `git clone https://github.com/Public-Health-Scotland/vscode_prep.git`.
+
+2. Once cloned, open this folder. To do this, click the explorer button on the left hand menu and then click on the open folder button. You should then be able to select the "vscode_prep" folder and click "OK".
+
+3. Within this folder is a script called `install_extensions.sh` which will automate the installation process. It already contains the extensions you will need to get started but it can be modified depending on your needs. To execute this script enter `bash install_extensions.sh vscode` in the terminal.
+
+4. You will see Installation completed! in your terminal. This means everything has worked and the extensions should have been installed. Go to Extensions icon on Activity Bar and you should see a list of the extensions installed.
+
+
+##### Environments
+
+You can use venv (similar to renv in R) to create environments (private package container). It is recommended that for each project you have a new environment. You can create venv inside your Python project or outside. 
+
+To create your first venv follow these instructions:
+
+1. If you cloned vscode_prep, you should close vscode_prep ("File" then "Close Folder") and start from the main user path. Open the terminal and create a folder for your new project (e.g python_demo). Use the following command in your terminal `mkdir python_demo`.
+
+2. Open this folder by clicking the explorer button on the left hand menu and then clicking on the open folder button. You should then be able to select the python_demo folder and click ok.
+
+3. In order to create a venv within this folder enter `python -m venv .venv` into the terminal. This creates a venv using whichever interpreter Python currently points to on your system. If you wish to specify a folder outwith your current folder and want your environment to use a specific Python version use something like: `/opt/python/3.11.13/bin/python3 -m venv your_file_path/.venv`. This uses the Python 3.11.13 interpreter to create a virtual environment at your_file_path/.venv.
+
+4. Once you have created your environment you will need to activate it. If your venv is in your current folder enter the following into the terminal `source .venv/bin/activate`. If your venv is outwith your current folder you will need to specify the file path like the following `source your_file_path/.venv/bin/activate`.
+
+5. You can refresh your VS Code to make sure your venv has been detected. Press `Ctrl` + `Shift` + `P` and search Developer reload window. You should see .venv as part of the terminal line. If venv has not been detect you may need to press `Ctrl` + `Shift` + `P`, search "Python: Select Interpreter" and manually select your venv.
+```{r vscodevenv, fig.align='center', out.width="100%"}
+knitr::include_graphics("images/vs-code-venv.png")
+```
+
+6. You will need to update your pip (Python package manager) which helps to download new packages: `pip install --upgrade pip wheel`.
+
+7. You have 2 options to install required packages (once your Python environment is activated). 
+* Option 1:Best practice is to have a `requirements.txt` file in every Python project folder. This would contain all the required packages for your project. An example of a `requirements.txt` file can be found in the [VS Code Setup instruction](https://github.com/Public-Health-Scotland/vscode_prep). To execute your file enter the following into the terminal `pip install -r requirements.txt --prefer-binary`.
+* Option 2: Installing one package at time using the command in terminal: `pip install pandas==2.3.3 --prefer-binary`.
+
+Note: If you don't activate your Python environment you will probably install your package in the main Python installation.
+
+
+#### Running code
+
+VS Code provides multiple ways to run code, with different approaches being more suitable depending on your workflow and the type of task you are performing.
+
+##### Running an entire script
+
+To execute the full script you can type the following into the terminal and press enter. The easiest way to open the terminal is the keyboard shortcut (`Ctrl` + `'`).
+```{python terminal, eval = FALSE, echo = TRUE}
+python your_file_name.py
+```
+
+Another way to run the whole script is to use the run Python file button at the top of the editor. This is similar to using source to run a script in RStudio.
+
+##### Running code snippets interactively
+
+If you wish to run snippets of your code or run it line by line you can do this using a Python Interactive Window. By pressing `Shift` + `Enter` on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press `Shift` + `Enter`. This is very similar to running code in RStudio by pressing `Ctrl` + `Enter`.
+
+```{r vscodeinteractive, fig.align='center',out.width="100%"}
+knitr::include_graphics("images/vs-code-interactive.png")
+```
+
+When you run code interactively you have to make sure the kernel selected in the right hand corner of the interactive pane is the correct venv.
+
+##### Jupyter Notebooks in VS Code
+
+You can also use Jupyter Notebooks by creating a .ipynb file. Each cell can be executed individually using `Shift` + `Enter` or by pressing the run button. This allows you to create code or markdown snippets. 
+
+```{r vscodenotebook, fig.align='center',out.width="100%"}
+knitr::include_graphics("images/vs-code-notebook.png")
+```
+
+When using Jupyter notebooks you have to select a kernel in the top right hand corner of your notebook. You should select the venv you have created for your project.
+
 
 ### Jupyter Notebook
 
