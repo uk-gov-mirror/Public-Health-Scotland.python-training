@@ -828,47 +828,26 @@ borders3.head()
 
 * `describe()` returns all summary statistics based on a given array.
 
-For example, `<df_name>["<col_name>"].median()` will generate the `median` value of the values within the stated column.
+For example, `df["column_name"].median()` will generate the `median` value of the values within the stated column.
 
-In the exercise below, you have the borders data-set loaded as `borders_data`. See if you can get the mean value for `LengthOfStay`, store it in a variable, and print that variable. Use the hint button if you need some help.
+In the exercise below, you have the borders data-set loaded as `borders`. See if you can get the mean value for `LengthOfStay`. Please store the mean value in a variable called `mean_value`, and print that variable. Use the hint button if you need some help.
 
 ```{python mean, exercise = TRUE, exercise.setup = "pandas-setup"}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-borders_data
+borders
 ```
 
 ```{python mean-hint-1}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-borders_data["LengthOfStay"]
+mean_value = borders["LengthOfStay"].mean()
 ```
-
 
 ```{python mean-hint-2}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-borders_data["LengthOfStay"].mean()
-```
-
-
-```{python mean-hint-3}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-mean_value = borders_data["LengthOfStay"].mean()
+mean_value = borders["LengthOfStay"].mean()
 
 print(mean_value)
 ```
 
 ```{python mean-solution}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-mean_value = borders_data["LengthOfStay"].mean()
+mean_value = borders["LengthOfStay"].mean()
 
 print(mean_value)
 ```
@@ -880,52 +859,41 @@ grade_code()
 
 ### Frequencies & Crosstabs
 
-* Frequency: `<df_name>["<col_name>").value_counts()]`
-* Crosstab: `pd.crosstab(<df_name>["<col_1_name>"], <df_name>["<col_2_name>"])`
-* Crosstab & Add Col/Row Totals: `pd.crosstab(<df_name>["<col_1_name>"], <df_name>["<col_2_name>"], margins = True)`
-tab
+* Frequency:
+```{python frequency, eval = FALSE, echo = TRUE}
+df["column_name".value_counts()]
+```
 
-Create a crosstab for `HospitalCode` and `Sex`, add column and row totals, store the table in a variable, and print it out. Use the hint button if you need some help.
+* Crosstab: 
+```{python crosstab, eval = FALSE, echo = TRUE}
+pd.crosstab(df["column_nameA"], df["column_nameB"])
+```
+
+* Crosstab & Add Column/Row Totals:
+```{python crosstab2, eval = FALSE, echo = TRUE}
+pd.crosstab(df["column_nameA"], df["column_nameB"], margins = True)
+```
+
+Create a crosstab for `HospitalCode` and `Sex`, add column and row totals. Use the hint button if you need some help.
 
 ```{python freq, exercise = TRUE, exercise.setup = "pandas-setup"}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-
+borders
 ```
 
 ```{python freq-hint-1}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
 ...pd.crosstab(...)
 ```
 
 ```{python freq-hint-2}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-crosstab_hospitalcode_sex = pd.crosstab(
-  borders_data["HospitalCode"], borders_data["Sex"]...)
+pd.crosstab(borders["HospitalCode"], borders["Sex"]...)
 ```
 
 ```{python freq-hint-3}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-crosstab_hospitalcode_sex = pd.crosstab(
-  borders_data["HospitalCode"], borders_data["Sex"], margins = True)
-print(crosstab_hospitalcode_sex)
+pd.crosstab(borders["HospitalCode"], borders["Sex"], margins = True)
 ```
 
 ```{python freq-solution}
-
-borders_data = pd.read_csv("data/borders_inc_age.csv")
-
-crosstab_hospitalcode_sex = pd.crosstab(
-  borders_data["HospitalCode"], borders_data["Sex"], margins = True)
-
-print(crosstab_hospitalcode_sex)
+pd.crosstab(borders["HospitalCode"], borders["Sex"], margins = True)
 ```
 
 ```{python freq-check}
