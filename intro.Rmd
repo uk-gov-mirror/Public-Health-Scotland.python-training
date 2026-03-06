@@ -902,7 +902,7 @@ grade_code()
 
 ## Wrangle – Part 1
 
-For the next sections, we will focus on using the pandas module manipulate data and data frames.
+For the next sections, we will focus on using the pandas module to manipulate data and data frames.
 
 ### Row Indexes
 
@@ -934,11 +934,11 @@ In this RangeIndex, we start labelling rows at 0, stop before 3, and increase by
 
 ### Sorting Rows
 
-The syntax to sort a DataFrame `df` in pandas by a particular column is 
+You can order the DataFrame rows in ascending order by a particular column. The syntax in pandas is:
 
 ```{python sort-value, eval = FALSE, echo = TRUE}
 df = df.sort_values(
-  by = 'Column'
+  by = 'column_name'
 )
 ```
 
@@ -947,7 +947,7 @@ where
 - `.sort_values()` is a DataFrame method. By default it will sort in ascending order. To sort in descending order you can add `ascending = False`:
 ```{python sort-value-desc, eval = FALSE, echo = TRUE}
 df = df.sort_values(
-  by = 'Column',
+  by = 'column_name',
   ascending = False
 )
 ```
@@ -968,8 +968,6 @@ Sometimes, we are only interested in looking at certain rows and columns of a Da
 We will explore how both of these work using a mini-DataFrame from `borders` data. 
 
 ```{python mini-df, echo = FALSE}
-import pandas as pd
-
 mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condition']).head(4)
 
 mini_df
@@ -978,8 +976,6 @@ mini_df
 Before demonstrating we will sort the data by `Main_Condition`. This isn't necessary to use `.loc[]` or `.iloc[]`, but it will make the difference between them clearer. 
 
 ```{python mini-df-sort, echo = FALSE}
-import pandas as pd
-
 mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condition']).head(4)
 
 mini_df.sort_values(by = 'Main_Condition')
