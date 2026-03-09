@@ -213,7 +213,7 @@ Jupyter Notebook is designed for the easy integration of text and Python program
 
 #### Open a New Jupyter Notebook
 
-We can access "Jupyter Notebook" on [Posit Workbench](https://pwb-prod.publichealthscotland.org/). After signing in, click on New Session and a diaglog box will pop up. Click on Editor and select "Jupyter Notebook" from the drop down list, and then Start Session. 
+We can access "Jupyter Notebook" on [Posit Workbench](https://pwb-prod.publichealthscotland.org/). After signing in, click on New Session and a diaglog box will pop up. Click on "Jupyter Notebook" and then click "Launch". 
 
 ```{r openpynb, fig.align='center', out.width="60%"}
 knitr::include_graphics("images/python-pwb.png")
@@ -225,22 +225,23 @@ You will see the interface looks like this. There are three main tabs in Jupyter
 
 - **Files** Your file directory
 - **Running** Lists all of the notebooks currently running
-- **Clusters** For using IPython in parallel with your cluster (beyond the scope of this training guidance)
 
 ```{r startsession, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/python-pwb-startsession.PNG")
+knitr::include_graphics("images/python-pwb-startsession.png")
 ```
 
 </br>
 
-To open a new Jupyter Notebook, click the "New" drop down menu on the Files tab and select “Python 3.10.2” under the notebooks heading. This will open a blank Notebook with an IPython console running underneath it. 
+To open a new Jupyter Notebook, click the "New" drop down menu on the Files tab and select “Python 3 (ipykernel)” under the notebooks heading. This will open a blank Notebook with an IPython console running underneath it. 
 
-```{r newnb, fig.align='center', out.width="100%"}
+```{r newnb, fig.align='left', out.width="25%"}
 knitr::include_graphics("images/python-pwb-newnb.png")
 ```
 
+</br>
+
 ```{r blanknb, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/python-pwb-blanknb.PNG")
+knitr::include_graphics("images/python-pwb-blanknb.png")
 ```
 
 </br>
