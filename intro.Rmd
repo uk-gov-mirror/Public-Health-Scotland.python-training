@@ -376,7 +376,9 @@ knitr::include_graphics("images/r_coding_cases.png")
 ```
 </div>
 
-### Numbers
+### Basic Data Types
+
+#### Numbers
 
 There are 3 main types of numbers that can be declared in Python.
 
@@ -393,21 +395,21 @@ k = 6.626e-32 # Using scientific notation
 var1 = 2 + 5.2j # Complex numbers
 ```
 
-### Arithmetic Operators
+#### Arithmetic Operators
 
 The following are examples of all the arithmetic operators available in Python. 
 
 ```{r, echo = FALSE}
 operators_table <- data.frame(
-  "Precedence" = c(1, 2, 3, 4), 
-  "Operator" = c("`+` `-`", "`*` `**` `/`", "`//`", "`%`"), 
-  "Description" = c("Addition, Subtraction", "Multiplication, Power, Division", "Floor Division (round down after division)", "Modulus (remainder after division)")
+  "Precedence" = c(1, 2, 3, 4, 5, 6, 7, 8), 
+  "Operator" = c("`**`", "`%`", "`*` `/`", "`//`", "`+` `-`", "`~`", "`&`", "<code>&#124;</code>"), 
+  "Description" = c("Power", "Modulus (remainder after division)", "Multiplication, Division", "Floor Division (round down after division)", "Addition, Subtraction", "Logical NOT", "Logical AND", "Logical OR")
 )
 
 knitr::kable(operators_table)
 ```
 
-### Strings
+#### Strings
 
 Strings in Python are an ordered sequence of characters, and can be declared with either single or double quotes. 
 
@@ -448,7 +450,7 @@ print('Hello' + ' ' + 'World' * 4)
 print('Hello' + (' ' + 'World') * 4)
 ```
 
-### Boolean
+#### Boolean
 
 Booleans represent either `True` or `False`.
 
@@ -465,13 +467,16 @@ If a value has some sort of content, it is normally evaluated as true:
 ```{python boolean2, exercise = TRUE}
 bool("Hi")
 bool([])
+bool(0)
+bool("")
+bool(None)
 ```
 
-Note that the empty `list` in the second expression returned `False`.
+Note that the empty `list`, `0`, `""`, and `None` all returned `False` as they don't have any content.
 
-### Data Types and Type Conversion
+#### Data Types and Type Conversion
 
-The `type()` function can be used to query the type of a Python object, and any type conversion can be performed by using the appropriate function e.g. `int()` for integer, `str()` for string, and `float()` for a floating point number. 
+Dynamic typing is one of Python's core features that sets it apart from statically typed languages. In Python, variables are not bound to a specific type at declaration. Instead, the type is determined at runtime based on the assigned value. This means that a single variable can hold data of different types throughout its lifetime hence making Python a flexible and easy-to-use language for rapid development and prototyping. The `type()` function can be used to query the type of a Python object, and any type conversion can be performed by using the appropriate function e.g. `int()` for integer, `str()` for string, and `float()` for a floating point number. 
 
 ```{python type-conversion, exercise = TRUE}
 myint = 12345
@@ -487,6 +492,10 @@ myfloat
 ## Data Structures
 
 There are various data structures which are built into Python. Some of the main ones are:
+
+- Sequence Types: list, tuple, range
+- Mapping Type: dict
+- Set Types: set, frozenset
 
 #### Lists
 
@@ -540,18 +549,6 @@ print(name_value)
 ```{python sets, exercise = TRUE}
 my_set = {1, 2, 3, 4, 5}
 print(my_set)
-```
-
-#### Strings
-
-- Strings are sequences of characters.
-- They are immutable, meaning you cannot change the characters in a string once it's created.
-- Strings support various operations and methods for text manipulation.
-
-
-```{python stringexample, exercise = TRUE}
-my_string = 'Hello, World!'
-print(my_string)
 ```
 
 ## Functions & Libraries
