@@ -401,9 +401,25 @@ The following are examples of all the arithmetic operators available in Python.
 
 ```{r, echo = FALSE}
 operators_table <- data.frame(
-  "Precedence" = c(1, 2, 3, 4, 5, 6, 7, 8), 
-  "Operator" = c("`**`", "`%`", "`*` `/`", "`//`", "`+` `-`", "`~`", "`&`", "<code>&#124;</code>"), 
-  "Description" = c("Power", "Modulus (remainder after division)", "Multiplication, Division", "Floor Division (round down after division)", "Addition, Subtraction", "Logical NOT", "Logical AND", "Logical OR")
+  "Precedence" = c(1, 2, 3, 4, 5, 6, 7, 8, 9), 
+  "Operator" = c("`**`", 
+                 "`%`", 
+                 "`*` `/`", 
+                 "`//`", 
+                 "`+` `-`", 
+                 "`>` `<` `==` `!= or ~=` `<=` `>=`", 
+                 "`! or ~`", 
+                 "`&`", 
+                 "<code>&#124;</code>"), 
+  "Description" = c("Power", 
+                    "Modulus (remainder after division)", 
+                    "Multiplication, Division", 
+                    "Floor Division (round down after division)", 
+                    "Addition, Subtraction", 
+                    "Comparison Operators (Greater than, Less than, Equal to, Not Equal to, Less than or equal to, Greater than or equal to)", 
+                    "Logical NOT", 
+                    "Logical AND", 
+                    "Logical OR")
 )
 
 knitr::kable(operators_table)
@@ -411,11 +427,13 @@ knitr::kable(operators_table)
 
 #### Strings
 
-Strings in Python are an ordered sequence of characters, and can be declared with either single or double quotes. 
+Strings in Python are arrays of unicode characters. However, Python does not have a character data type, a single character is simply a string with a length of 1. Strings can be declared with either single or double quotes, and square brackets can be used to access elements of the string.
 
-```{python strings1, eval = FALSE, echo = TRUE}
-name = 'John'
-surname = 'Doe'
+```{python strings1, exercise = TRUE}
+a = "Hello, World!"
+
+# Get the character at position 1 (the first character has the position 0)
+print(a[1])
 ```
 
 Multiline strings can be declared with triple single and triple double quotes, but note that whitespace characters are recorded in the string e.g. for tabs and for newlines. 
@@ -442,12 +460,33 @@ nested_quotes
 print(nested_quotes)
 ```
 
-For strings, the plus `+` sign will concatenate two strings into one, and the asterisk `*` will repeat a string a set number of times. Have a look and click 'Run Code' below to see the output. 
+For strings, the plus `+` sign will concatenate two strings into one, and the asterisk `*` will repeat a string a set number of times. Have a look and click 'Run Code' below to see the output.
 
 ```{python string5, exercise = TRUE}
 print('Hello' + ' ' + 'World')
 print('Hello' + ' ' + 'World' * 4)
 print('Hello' + (' ' + 'World') * 4)
+```
+
+</br>
+
+Python has a set of built-in methods that you can use on strings, such as:
+
+```{r echo = FALSE}
+string_method <- data.frame("Method" = c("capitalize()", "casefold()", "count()"), 
+                            "Description" = c("Converts the first character to upper case", 
+                                              "Converts string into lower case", 
+                                              "Returns the number of times a specified value occurs in a string"))
+
+knitr::kable(string_method)
+```
+
+```{python string6, exercise = TRUE}
+txt = "i love apples, apple ARE my favorite fruit"
+
+txt.capitalize()
+txt.casefold()
+txt.count("apple")
 ```
 
 #### Boolean
@@ -551,151 +590,61 @@ my_set = {1, 2, 3, 4, 5}
 print(my_set)
 ```
 
-## Functions & Libraries
-
-In Python, functions are a block of organised and reusable code which performs a specific task.
-
-Functions can be called from anywhere within the script, and can be stored anywhere within the script - **however**, it is custom convention to store functions are the top, or near the top, of the script in order to enhance readability and maintenance of the code. 
-
-### Structure
-
-Functions are made up of the:
-
-* Defined keyword `def`
-* Function name
-* `()` parentheses which may include parameters.
-* Function body
-
-
-```{python function1, eval = FALSE, echo = TRUE}
-def <function_name>():
-  function_body
-
-```
-
-Example:
-
-
-```{python function2, exercise=TRUE}
-def greet():
-  print("Hello!")
-```
-
-When you run the above code, you will see that nothing is outputted - this is because the function has not been called.
-
-
-```{python function3, exercise=TRUE}
-def greet():
-  print("Hello!")
-
-greet()
-```
-
-### Parameters and Arguments
-
-Parameters are variables which are listed inside the parentheses in the function definition.
-
-They are placeholders are actual values which will be passed into the function when it is called.
-
-The values passed into a function are called arguments. 
-
-
-```{python function4, exercise=TRUE}
-def greet(name):
-  print("Hello, " + name + "!")
-  
-greet("Bob")
-```
-
-You can also pass through multiple arguments:
-
-
-```{python function5, exercise=TRUE}
-def add(a,b,c):
-  print(a + b + c)
-  
-result = add(1,2,3)
-```
-
-### Return
-
-The return statement can optionally be used to return the data back to the caller.
-
-```{python function6, exercise=TRUE}
-def add(a,b,c):
-  return a + b + c
-  
-result = add(1,2,3)
-print(result)
-```
-
-#### Python Library
-
-Python library is a collection of functions and methods that allows you to perform lots of actions without writing your own code. For example, “pandas” is a Python library for data manipulation and analysis, which is used a lot in this training guidance. 
-
-
-## Control Flow & Iteration{#comparisonoperators}
+## Control Flow & Iteration
 
 As is the case in most other programming languages, control flow is where decisions are made, and iteration is where processes are repeated. 
-
-### Comparison Operators
-
-Here are the most commonly used comparison operators used in conditional statements in Python:
-
-```{r, echo = FALSE}
-operators_table <- data.frame(
-  "Operator" = c("`>` `<`", "`==` `!=`", "`<=` `>=`","`and` `or`"), 
-  "Description" = c("Greater than, Less than", "Equal to, Not Equal to", "Less than or equal to, Greater than or equal to", "And, Or")
-)
-
-knitr::kable(operators_table)
-```
-
 
 ### Control Flow - If
 
 `if` is the most common comparison operator used in Python.
 
 ```{python if1, exercise=TRUE}
-if 5 == 5:
-  print("5 is equal to 5")
+a = 5
+b = 100
 
-if 5 == 4 or 5 == 5:
-  print("Either 5 is equal to 4, or 5 is equal to 5")
+if a == 5:
+  print("a is equal to 5")
 
-if 6 <= 6:
-  print("6 is less than or equal to 6")
+if b > a:
+  print("b is greater than a")
 ```
 
 There are some further statements when using `if` that you should be familiar with:
 
-- `elif` is short for *else if* and is used for multiple `if` conditions
-- `else` is executed if the preceding `if` and `elif` statements are false
+- `elif` is short for *else if*. `elif` keyword is Python's way of saying "if the previous conditions were not true, then try this condition". It allows you to check multiple expressions for `True` and execute a block of code as soon as one of the conditions evaluates to `True`.
 
+- `else` keyword catches anything which isn't caught by the preceding conditions. It is executed if the preceding `if` and `elif` statements are evaluated to `False`.
 
 ```{python if2, exercise=TRUE}
-def check_if_number_is_1_2_or_3(number):
-  if number == 1:
-    print("The number is 1")
-  elif number == 2:
-    print("The number is 2")
-  else:
-    print("The number is 3")
+a = 100
+b = 35
 
-check_if_number_is_1_2_or_3(3)
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+else:
+  print("a is greater than b")
+```
+
+If you have only one statement to execute, you can put it on the same line as the `if` statement.
+
+```{python if3, exercise=TRUE}
+a = 8
+b = 3
+if a > b: print("a is greater than b")
 ```
 
 ### For loop
 
-For loops are used for iteration.
+For loops are used for iteration over a sequence (that is either a list, a tuple, a dictionary, a set, or a string). 
 
 There are multiple ways to use for loops.
 
 #### Iterating over a list:
 
-
 ```{python forloop1, exercise=TRUE}
-list_of_fruits = ["apple","banana","cherry"]
+list_of_fruits = ["apple", "banana", "cherry"]
 
 for fruits in list_of_fruits:
   print(fruits)
@@ -703,18 +652,18 @@ for fruits in list_of_fruits:
 
 #### Using Enumerate:
 
-You can also use `enumerate` to iterate over a sequence and get the index position of each item also:
+You can also use `enumerate` to iterate over a sequence and get the index position of each item:
 
 ```{python forloop2, exercise=TRUE}
-list_of_fruits = ["apple","banana","cherry"]
+list_of_fruits = ["apple", "banana", "cherry"]
 
 for index, fruits in enumerate(list_of_fruits):
-  print(index,fruits)
+  print(index, fruits)
 ```
-
 
 #### Iterating over a string:
 
+Iterating over a string with print() can print each character in the string in order:
 
 ```{python forloop3, exercise=TRUE}
 for char in "Python":
@@ -723,20 +672,74 @@ for char in "Python":
 
 #### Iterating over a range:
 
-`range` in Python determines the position of the value, rather than the value itself. 
+To loop through a set of code a specified number of times, we can use the `range()` function,
 
-Remember that positions in Python begin at position `0`.
+The `range()` function returns a sequence of numbers, starting from index 0 by default, and increments by 1 (by default), and ends at a specified number.
+
+Note that `range(6)` is not the values of 0 to 6, but the values 0 to 5.
 
 ```{python forloop4, exercise=TRUE}
-
-for i in range(5):
+for i in range(6):
     print(i)
-
 ```
+
+The `range()` function defaults to 0 as a starting value, however it is possible to specify the starting value by adding a parameter: `range(2, 6)`, which means values from 2 to 6 (but not including 6):
+
+```{python forloop5, exercise=TRUE}
+for i in range(2, 6):
+    print(i)
+```
+
+The `range()` function defaults to increment the sequence by 1, however it is possible to specify the increment value by adding a third parameter: `range(2, 30, 3)`:
+
+```{python forloop6, exercise=TRUE}
+for i in range(2, 30, 3):
+    print(i)
+```
+
+#### The break() Statement
+
+With the `break` statement we can stop the loop before it has looped through all the items:
+
+Exit the loop when x is "banana":
+
+```{python break1, exercise=TRUE}
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+  if x == "banana":
+    break
+```
+
+Exit the loop when x is "banana", but this time the break comes before the print:
+
+```{python break2, exercise=TRUE}
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    break
+  print(x)
+```
+
+It would not print "banana" as the loop has already been exit when x equals to "banana".
+
+#### The continue() Statement
+
+With the `continue` statement we can stop the current iteration of the loop, and continue with the next:
+
+```{python continue, exercise=TRUE}
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    continue
+  print(x)
+```
+
+It would not print "banana" as the loop was stopped when x equals to "banana", and then continue with the next one "cherry". 
 
 #### Nested Loops
 
-```{python forloop5, exercise=TRUE}
+```{python forloop7, exercise=TRUE}
 
 adjective = ["red", "big", "tasty"]
 fruits = ["apple", "banana", "cherry"]
@@ -747,8 +750,82 @@ for x in adjective:
 
 ```
 
+## Functions & Libraries
 
-## Importing and Exporting Datasets
+In Python, functions are a block of organised and reusable code which performs a specific task.
+
+Functions can be called from anywhere within the script, and can be stored anywhere within the script - **however**, it is custom convention to store functions at the top, or near the top, of the script in order to enhance readability and maintenance of the code. 
+
+### Structure
+
+Functions are made up of the:
+
+* Defined keyword `def`
+* Function name
+* `()` parentheses which may include parameters.
+* Function body
+
+```{python function1, eval = FALSE, echo = TRUE}
+def <function_name>():
+  function_body
+
+```
+
+Example:
+
+```{python function2, exercise=TRUE}
+def greet():
+  print("Hello!")
+```
+
+When you run the above code, you will see that nothing is output - this is because the function has not been called.
+
+```{python function3, exercise=TRUE}
+def greet():
+  print("Hello!")
+
+greet()
+```
+
+### Parameters and Arguments
+
+Parameters are variables which are listed inside the parentheses in the function definition. They are placeholders for actual values which will be passed into the function when it is called.
+
+The values passed into a function are called arguments. 
+
+```{python function4, exercise=TRUE}
+def greet(name):
+  print("Hello, " + name + "!")
+  
+greet("Bob")
+```
+
+You can also pass through multiple arguments:
+
+```{python function5, exercise=TRUE}
+def add(a, b, c):
+  print(a + b + c)
+  
+result = add(1, 2, 3)
+```
+
+### Return
+
+The return statement can optionally be used to return the data back to the caller.
+
+```{python function6, exercise=TRUE}
+def add(a, b, c):
+  return a + b + c
+  
+result = add(1, 2, 3)
+print(result)
+```
+
+#### Python Library
+
+Python library is a collection of functions and methods that allows you to perform lots of actions without writing your own code. For example, “pandas” is a Python library for data manipulation and analysis, which is used a lot in this training guidance. 
+
+## File Handling
 
 The Python language can be used for data analysis. The first step in performing analysis is to access your dataframe (i.e. your dataset). This section will introduce you how to import and export datasets. 
 
@@ -1089,7 +1166,7 @@ If we specify neither the start nor the final value, the slice will include all 
 
 ### Boolean Masks
 
-We often need to select data by properties, instead of by position/index. For example we might want to select all rows in `borders` corresponding to the HospitalCode as `B120H`. We can achieve this using Python's [comparison operators](#comparisonoperators) to compare values. Whenever we compare two variables using a comparison operator, Python returns a `True` if the comparison is correct, and a `False` if it is incorrect. 
+We often need to select data by properties, instead of by position/index. For example we might want to select all rows in `borders` corresponding to the HospitalCode as `B120H`. We can achieve this using Python's comparison operators to compare values. Whenever we compare two variables using a comparison operator, Python returns a `True` if the comparison is correct, and a `False` if it is incorrect. 
 
 For example, here are a few comparisons and their output:
 
@@ -1298,7 +1375,7 @@ Another way to recode data which offers more flexibility is by using the `loc` a
 df.loc[df['column_name'] == existing_value, 'column_name'] = new_value
 ```
 
-This method uses the boolean [operator](#comparisonoperators) `==`, which means **equal to**. We can also apply other operators. 
+This method uses the boolean operator `==` which means **equal to**. We can also apply other operators. 
 
 For example, in the case that you wish to find all the values which are less than `5` in a given column, and replace them with `Small number`, you would code the following:
 
