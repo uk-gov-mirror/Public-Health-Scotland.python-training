@@ -260,7 +260,7 @@ Jupyter notebook is a modal editor which means that the keyboard does different 
 - **Edit mode** - it is indicated by a green cell border and left sidebar, and a prompt showing in the editor area: 
 
 ```{r editmode, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/edit-mode.PNG")
+knitr::include_graphics("images/edit-mode.png")
 ```
 
 When a cell is in edit mode, you can type things such as Python codes into the cell, like a normal text editor. Enter edit mode by pressing Enter or using the mouse to click on a cell’s editor area. 
@@ -268,7 +268,7 @@ When a cell is in edit mode, you can type things such as Python codes into the c
 - **Command mode** - Once you click somewhere else outside the cell or press “esc” on keyboard, the cell turns into Command mode. Command mode is indicated by a grey cell border and a blue sidebar:
 
 ```{r commandmode, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/command-mode.PNG")
+knitr::include_graphics("images/command-mode.png")
 ```
 
 When you are in command mode, you are able to edit the notebook as a whole, but not type into individual cells. Most importantly, in command mode, the keyboard is mapped to a set of shortcuts that let you perform notebook and cell actions efficiently. For example, if you are in command mode and you press C and V, you will copy and paste the current cell.
@@ -280,7 +280,7 @@ A full list of useful shortcuts is available by going to "Help > Keyboard Shortc
 Markdown text cells support plain text, Markdown and HTML. It will be useful to create headings, text instructions etc using markdown to organise the notebook like a written document. A cell can be changed from code mode to markdown mode by going to the top menu bar "Cell > Cell Type > Markdown". Or select “Markdown” from the dropdown list:
 
 ```{r markdown, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/markdown-menu.PNG")
+knitr::include_graphics("images/markdown-menu.png")
 ```
 
 Or press M while in Command Mode and highlighting the cell. 
@@ -288,13 +288,13 @@ Or press M while in Command Mode and highlighting the cell.
 Here is an example of typing some text in a markdown cell. You can use hash key “#” to indicate the size of heading, followed by a space and the text. 
 
 ```{r markdown-example1, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/markdown-example1.PNG")
+knitr::include_graphics("images/markdown-example1.png")
 ```
 
 Then press *Shift + Enter* to finish. 
 
 ```{r markdown-example2, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/markdown-example2.PNG")
+knitr::include_graphics("images/markdown-example2.png")
 ```
 
 
