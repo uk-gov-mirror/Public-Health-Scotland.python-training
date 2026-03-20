@@ -74,6 +74,7 @@ systems.
 
 - Learning Python opens up professional development opportunities. 
 
+
 ## IDE
 
 ### VS Code
@@ -366,15 +367,26 @@ if 1 < 10:
 
 Indentation not only affords proper functionality, but it also enhances readability and comprehension for yourself, and future co-developers. 
 
-### Style
+### Python Variables
 
-**Naming** - variables and filenames should have meaningful names in *`snake_case`* format, preferring all lower case.
+Variables are containers for storing data values. A variable is created the moment you first assign a value to it using `=`.
 
-<div>
-```{r echo=FALSE, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/r_coding_cases.png")
+```{python assignvariable, exercise=TRUE}
+x = 5
+y = "John"
+print(x)
+print(y)
 ```
-</div>
+
+A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume).
+
+Rules for Python variables:
+
+- A variable name must start with a letter or the underscore character
+- A variable name cannot start with a number
+- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+- Variable names are case-sensitive (age, Age and AGE are three different variables)
+- A variable name cannot be any of the Python keywords.
 
 ### Basic Data Types
 
@@ -528,6 +540,7 @@ mystr
 myfloat
 ```
 
+
 ## Data Structures
 
 There are various data structures which are built into Python. Some of the main ones are:
@@ -590,6 +603,7 @@ my_set = {1, 2, 3, 4, 5}
 print(my_set)
 ```
 
+
 ## Control Flow & Iteration
 
 As is the case in most other programming languages, control flow is where decisions are made, and iteration is where processes are repeated. 
@@ -635,13 +649,62 @@ b = 3
 if a > b: print("a is greater than b")
 ```
 
-### For loop
+### While Loop
+With the `while` loop we can execute a set of statements as long as a condition is true.
+
+```{python whileloop1, exercise=TRUE}
+i = 1 # define an indexing variable and set to initial value as 1
+while i < 6:
+  print(i)
+  i += 1
+```
+
+#### The break() Statement
+
+With the `break` statement we can stop the loop even if the while condition is true:
+
+```{python whileloop2, exercise=TRUE}
+i = 1
+while i < 6:
+  print(i)
+  if i == 3:
+    break
+  i += 1
+```
+
+#### The continue() Statement
+
+With the `continue` statement we can stop the current iteration, and continue with the next:
+
+```{python whileloop3, exercise=TRUE}
+i = 0
+while i < 6:
+  i += 1
+  if i == 3:
+    continue
+  print(i)
+```
+
+#### The else() Statement
+
+With the `else` statement we can run a block of code once when the condition no longer is true:
+
+```{python whileloop4, exercise=TRUE}
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+else:
+  print("i is no longer less than 6")
+```
+
+### For Loop
 
 For loops are used for iteration over a sequence (that is either a list, a tuple, a dictionary, a set, or a string). 
 
 There are multiple ways to use for loops.
 
-#### Iterating over a list:
+#### Iterating Over a List:
 
 ```{python forloop1, exercise=TRUE}
 list_of_fruits = ["apple", "banana", "cherry"]
@@ -661,7 +724,7 @@ for index, fruits in enumerate(list_of_fruits):
   print(index, fruits)
 ```
 
-#### Iterating over a string:
+#### Iterating Over a String:
 
 Iterating over a string with print() can print each character in the string in order:
 
@@ -670,7 +733,7 @@ for char in "Python":
     print(char)
 ```
 
-#### Iterating over a range:
+#### Iterating Over a Range:
 
 To loop through a set of code a specified number of times, we can use the `range()` function,
 
@@ -740,15 +803,14 @@ It would not print "banana" as the loop was stopped when x equals to "banana", a
 #### Nested Loops
 
 ```{python forloop7, exercise=TRUE}
-
 adjective = ["red", "big", "tasty"]
 fruits = ["apple", "banana", "cherry"]
 
 for x in adjective:
     for y in fruits:
         print(x, y)
-
 ```
+
 
 ## Functions & Libraries
 
@@ -825,6 +887,7 @@ print(result)
 
 Python library is a collection of functions and methods that allows you to perform lots of actions without writing your own code. For example, “pandas” is a Python library for data manipulation and analysis, which is used a lot in this training guidance. 
 
+
 ## File Handling
 
 The Python language can be used for data analysis. The first step in performing analysis is to access your dataframe (i.e. your dataset). This section will introduce you how to import and export datasets. 
@@ -873,7 +936,7 @@ If you make any changes to borders and would like to save it as a new .csv file,
 borders.to_csv("file path and name")
 ```
 
-### Read Specific Columns
+#### Read Specific Columns
 
 It is possible to omit certain columns from a dataframe when importing a file by using **usecols** command:
 
@@ -894,6 +957,7 @@ borders3 = borders2[['URI', 'Specialty', 'HospitalCode']]
 # Check the first few rows of the dataset. Default is 5 rows. 
 borders3.head()
 ```
+
 
 ## Explore
 
@@ -930,7 +994,6 @@ print(mean_value)
 ```{python mean-check}
 grade_code()
 ```
-
 
 ### Frequencies & Crosstabs
 
@@ -974,6 +1037,7 @@ pd.crosstab(borders["HospitalCode"], borders["Sex"], margins = True)
 ```{python freq-check}
 grade_code()
 ```
+
 
 ## Wrangle – Part 1
 
@@ -1318,6 +1382,7 @@ df.drop('column_name', axis = 1, inplace = True)
 df.drop(['column_nameA', 'column_nameB'], axis = 1, inplace = True)
 ```
 
+
 ## Wrangle – Part 2
 
 ### Manipulate Strings
@@ -1499,6 +1564,7 @@ baby6 = pd.read_csv("data/Baby6.csv")
 
 baby5.merge(baby6, how = 'left', on = ['FAMILYID','DOB'])
 ```
+
 
 ## Help & Feedback
 
