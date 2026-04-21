@@ -98,12 +98,12 @@ knitr::include_graphics("images/vs-code.png")
 
 The layout of the VS Code interface can be divided into 6 different parts:
 
-* **Activity Bar**: This is located on the far left side of the interface. This lets you access different options and switch between different views on the primary side bar.
-* **Primary Side Bar**: This is located on the left side of the interface to the right of the activity bar. It contains different views like the Explorer, Search, and Source Control to assist you while working on your project.
-* **Editor**: This is located in the center of the interface and is the main place to edit your files. You can open as many editors as you like side by side vertically and horizontally.
-* **Panel**: This is located at the bottom of the interface below the editor. This contains output, debug information, errors and warnings, and an integrated terminal. To open the terminal the keyboard shortcut is `Ctrl` + `'`.
-* **Command Palette**: This is located right at the top of the interface. The keyboard shortcut `Ctrl` + `Shift` + `P` brings up the Command Palette and provides access to commands.
-* **Status Bar**: This is located right at the bottom of the interface and provides information about the open project.
+1. **Activity Bar**: This is located on the far left side of the interface. This lets you access different options and switch between different views on the primary side bar.
+2. **Primary Side Bar**: This is located on the left side of the interface to the right of the activity bar. It contains different views like the Explorer, Search, and Source Control to assist you while working on your project.
+3. **Editor**: This is located in the center of the interface and is the main place to edit your files. You can open as many editors as you like side by side vertically and horizontally.
+4. **Panel**: This is located at the bottom of the interface below the editor. This contains output, debug information, errors and warnings, and an integrated terminal. To open the terminal the keyboard shortcut is `Ctrl` + `'`.
+5. **Command Palette**: This is located right at the top of the interface. The keyboard shortcut `Ctrl` + `Shift` + `P` brings up the Command Palette and provides access to commands.
+6. **Status Bar**: This is located right at the bottom of the interface and provides information about the open project.
 
 ```{r vscodeoverview, fig.align='center', out.width="100%"}
 knitr::include_graphics("images/vs-code-overview.png")
