@@ -20,3 +20,14 @@ checking and feedback.
 ``` r
 remotes::install_github("rstudio/gradethis")
 ```
+
+# Running in Posit Workbench
+- If PWB has been updated it means there are new Python versions. So you have to 
+check if your previously created pyenv is still there. Run this command in the 
+terminal tab: `ls -l ~/.virtualenvs`
+- If you see pyenv folder, you have to delete it using this command: 
+`rm -rf ~/.virtualenvs/venv313`
+- The previous pyenv gets obsolete because of a PWB update with new Python 
+versions.
+- We will be able to run this project because it will create a new pyenv 
+(with the new Python version).
