@@ -1084,6 +1084,7 @@ df = df.sort_values(
 where
 
 - `.sort_values()` is a DataFrame method. By default it will sort in ascending order. To sort in descending order you can add `ascending = False`:
+
 ```{python sort-value-desc, eval = FALSE, echo = TRUE}
 df = df.sort_values(
   by = 'column_name',
@@ -1092,12 +1093,39 @@ df = df.sort_values(
 ```
 - `by` is a keyword that receives the label of the column to sort by.
 
-Let's sort `borders` by `HospitalCode`:
+There is another argument called `inplace` with default value as `False`. It 
+determines if the sorted value is saved in the output when there is no assignment. 
+It will save the sorted value if `inplace = True`, or the output is assigned to an object.
+
+Let's sort `borders` by `HospitalCode`. If `inplace` is set as its default `False` and there is no assignment of the output into an object, the sorted data would 
+not be saved.
 
 ```{python sort-value2, exercise = TRUE, exercise.setup = "pandas-setup"}
+# The output would not be saved.
 borders.sort_values(
   by = 'HospitalCode'
 )
+
+print(borders)
+```
+
+```{python sort-value3, exercise = TRUE, exercise.setup = "pandas-setup"}
+# The output would be saved.
+borders.sort_values(
+  by = 'HospitalCode',
+  inplace = True
+)
+
+print(borders)
+```
+
+```{python sort-value4, exercise = TRUE, exercise.setup = "pandas-setup"}
+# The output would be saved if assigning the output to another object.
+borders1 = borders.sort_values(
+  by = 'HospitalCode'
+)
+
+print(borders1, borders)
 ```
 
 ### Selecting Specific Rows
