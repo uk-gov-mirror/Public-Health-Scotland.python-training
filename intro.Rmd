@@ -1130,7 +1130,13 @@ print(borders1, borders)
 
 ### Selecting Specific Rows
 
-Sometimes, we are only interested in looking at certain rows and columns of a DataFrame. We can select sections of a DataFrame using two methods: `.loc[]` and `.iloc[]`. 
+Sometimes, we are only interested in looking at certain rows and columns of a DataFrame. We can select sections of a DataFrame using `.loc[]`. 
+
+The `.loc[]` index works using the index labels:
+
+```{python loc, eval = FALSE, echo = TRUE}
+df.loc[list_of_row_labels, list_of_column_labels]
+```
 
 We will explore how both of these work using a mini-DataFrame from `borders` data. 
 
@@ -1140,7 +1146,7 @@ mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condit
 mini_df
 ```
 
-Before demonstrating we will sort the data by `Main_Condition`. This isn't necessary to use `.loc[]` or `.iloc[]`, but it will make the difference between them clearer. 
+Before demonstrating we will sort the data by `Main_Condition`. This isn't necessary to use `.loc[]`, but it will show how `.loc[]` works clearer. 
 
 ```{python mini-df-sort, echo = FALSE}
 mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condition']).head(4)
@@ -1148,17 +1154,7 @@ mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condit
 mini_df.sort_values(by = 'Main_Condition')
 ```
 
-Note that the row index is now out-of-order. This will be important later on. 
-
-#### Using `.loc[]`
-
-The `.loc[]` index works using the index labels:
-
-```{python loc, eval = FALSE, echo = TRUE}
-df.loc[list_of_row_labels, list_of_column_labels]
-```
-
-For example, run the following code to see which rows are selected:
+Note that the row index is now out-of-order. Run the following code to see which rows are selected:
 
 ```{python mini-df-loc, exercise = TRUE, exercise.setup = "pandas-setup"}
 mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condition']).head(4)
@@ -1168,70 +1164,21 @@ mini_df_sort = mini_df.sort_values(by = 'Main_Condition')
 mini_df_sort.loc[[0, 2],['Main_Condition']]
 ```
 
-The first list (`[0, 2]`) instructs `.loc[]` to select the rows labelled `0` and `2` in order. The second list (`['Main_Condition']`) instructs `.loc[]` to select only the column labelled `Main_Condition`. 
+The first list (`[0, 2]`) instructs `.loc[]` to select the rows **labelled** as `0` and `2` in order. The second list (`['Main_Condition']`) instructs `.loc[]` to select only the column labelled `Main_Condition`. 
 
-#### Using `.iloc[]`
-
-The `.iloc[]` index works using the *position* of the rows and columns, instead of their labels:
-
-```{python iloc, eval = FALSE, echo = TRUE}
-df.iloc[list_of_row_positions, list_of_column_positions]
-```
-
-where
-
-- both the row positions and column positions start at `0`
-- rows are counted top to bottom
-- columns are counted left to right
-
-For example, run the following code to see which rows are selected:
-
-```{python mini-df-iloc, exercise = TRUE, exercise.setup = "pandas-setup"}
-mini_df = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'Main_Condition']).head(4)
-
-mini_df_sort = mini_df.sort_values(by = 'Main_Condition')
-
-mini_df_sort.iloc[[0, 2],[1]]
-```
-
-Here, the list (`[0, 2]`) instructs `.iloc[]` to select only the first row (position `0`) and the third row (position `2`). The column list `[1]` instructs `.iloc[]` to select the second column, which is the column labelled `Main_Condition`. 
+So note that `.loc[]` does the selection based on index labels. It selects the rows **labelled** as `0` and `2` instead of the actual first and third rows. 
 
 ### Selecting Ranges of Rows
 
-Instead of specifying lists of rows and columns with `.loc/.iloc`, we can specify a **slice**, which is like saying `select all rows from row A to row B`. 
+Instead of specifying lists of rows and columns we can specify a **slice**, which is like saying `select all rows from row A to row B`. 
 
-#### Slices with `.iloc`
-
-A slice reproduces a consecutive list by specifying where to start and stop, using the syntax `start_position:stop_position`, where
-
-- `start_position` is the first position to include
-- `stop_position` is one position *beyond* the last position to include
-
-For example, to reproduce our list `[0, 1, 2, 3, 4]`, we would use the slice `0:5` to indicate:
-
-- start at position `0`
-- stop before position `5`
-- include all positions in-between (`1`, `2`, `3`, `4`)
-
-We want to select the first 4 rows and the `HospitalCode`, `Specialty`, and `ManagementofPatient` (second to fourth) columns from `borders` after sorting the data by `Main_Condition`. We will need two slices, one for the rows and one for the columns:
-
-- **rows**: we want to start at the first row (postion `0`) and end *before* the fifth row (position `4`). The slice is `0:4` and will include positions `0`, `1`, `2` and `3`. 
-- **columns**: we want to start at the second column (position `1`) and end *before* the fifth column (position `4`). The slice is `1:4` and will include positions `1`, `2` and `3`. 
-
-```{python slice-iloc, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders = borders.sort_values(by = 'Main_Condition')
-borders.iloc[0:4,1:4]
-```
-
-#### Slices with `.loc`
-
-Unlike `.iloc`, slices using `.loc` include the label after the `:` in the slice syntax: `start_label:stop_label`, which will include
+Slices using `.loc` include the label after the `:` in the slice syntax: `start_label:stop_label`, which will include
 
 - the row/column labelled `start_label`
 - the row/column labelled `stop_label`
 - all rows/columns in between
 
-Let's use `.loc` to select the same section of `borders`. This is how the data looks like after soring by `Main_Condition`:
+Let's use `.loc` to select the same section of `borders`. This is how the data looks like after sorting by `Main_Condition`:
 
 ```{python slice-loc1, echo = FALSE}
 borders = borders.sort_values(by = 'Main_Condition')
@@ -1240,7 +1187,7 @@ borders
 
 Again we will need two slices:
 
-- **rows**: the first four rows start at the label `5018` and end at `23180`. The slice is `5018:23180` and will include rows labelled `5018`, `6671`, `3420` and `23180`. Note how the `stop_label` is included, unlike with `.iloc`. 
+- **rows**: the first four rows start at the label `5018` and end at `23180`. The slice is `5018:23180` and will include rows labelled `5018`, `6671`, `3420` and `23180`. Note how the `stop_label` is included. 
 - **columns**: the first column to include is labelled `HospitalCode` and the last is `ManagementofPatient`. The slice is `'HospitalCode':'ManagementofPatient'` and will include columns labelled `HospitalCode`, `Specialty` and `ManagementofPatient`.
 
 ```{python slice-loc2, exercise = TRUE, exercise.setup = "pandas-setup"}
@@ -1248,13 +1195,11 @@ borders = borders.sort_values(by = 'Main_Condition')
 borders.loc[5018:23180,'HospitalCode':'ManagementofPatient']
 ```
 
-#### Open-Ended Slices
+### Open-Ended Slices
 
-If we don't want to specify a start value, the slice will start at the first position/label. For example, the `.iloc` slice `:3` would include rows at positions `0`, `1` and `2`. 
+If we don't want to specify a start value, the slice will start at the first label. Similarly, if we don't specify an end value, the slice will end at the final label. For example, the `.loc` slice `'HospitalCode':` will include every column starting at `HospitalCode` through to the final column of the DataFrame. 
 
-Similarly, if we don't specify an end value, the slice will end at the final position/label. For example, the `.loc` slice `'HospitalCode':` will include every column starting at `HospitalCode` through to the final column of the DataFrame. 
-
-If we specify neither the start nor the final value, the slice will include all rows and columns. For example, the code `borders.iloc[0:2,:]` will include rows at positions `0` and `1` along with every column. 
+If we specify neither the start nor the final value, the slice will include all rows and columns. For example, the code `borders.loc[0:2,:]` will include rows labelled as `0`, `1` and `2`, along with every column. 
 
 ### Boolean Masks
 
