@@ -1201,6 +1201,50 @@ If we don't want to specify a start value, the slice will start at the first lab
 
 If we specify neither the start nor the final value, the slice will include all rows and columns. For example, the code `borders.loc[0:2,:]` will include rows labelled as `0`, `1` and `2`, along with every column. 
 
+### Selecting Rows Using `query()`
+
+An easy way to filter rows in a DataFrame is to use `query()` in Pandas. Instead of juggling multiple `&` (and), `|` (or), and parentheses, you can just write your condition like plain English. The basic syntax is:
+
+```{python query1, eval = FALSE, echo = TRUE}
+df.query('condition')
+```
+
+where
+
+- **`df`** is your Pandas DataFrame.
+- **`query()`** is the method you’re calling.
+- **'condition'** is a string where you define your filtering logic.
+
+For example we want to filter the `HospitalCode` is `B120H` for the first 10 rows 
+from `borders`. 
+
+```{python query2, exercise = TRUE, exercise.setup = "pandas-setup"}
+result = borders.head(10).query('HospitalCode == "B120H"')
+
+print(result)
+```
+
+Note that two `=` signs performs the comparison, and one `=` performs the assignment to the variable. 
+
+You can also use logical operators (`and`, `or`, `not`) in query to filter with 
+multiple conditions. 
+
+- Use `and` for **both** conditions to be true.
+- Use `or` when **either** condition can be true.
+- Use `not` to **exclude** specific conditions.
+
+For example we want to filter the `HospitalCode` is `B120H` and `Specialty` as `A1` 
+for the first 10 rows from `borders`. 
+
+```{python query3, exercise = TRUE, exercise.setup = "pandas-setup"}
+result = borders.head(10).query('HospitalCode == "B120H" and Specialty == "A1"')
+
+print(result)
+```
+
+Please note that in `query()`, you should always use `and`, `or`, and `not`, instead of 
+`&`, `|` and `~`.
+
 ### Boolean Masks
 
 We often need to select data by properties, instead of by position/index. For example we might want to select all rows in `borders` corresponding to the HospitalCode as `B120H`. We can achieve this using Python's comparison operators to compare values. Whenever we compare two variables using a comparison operator, Python returns a `True` if the comparison is correct, and a `False` if it is incorrect. 
@@ -1235,8 +1279,6 @@ It can be helpful to assign a Boolean mask to a variable. For example let's assi
 is_hosp = (borders.head(10)['HospitalCode'] == 'B120H')
 ```
 
-Note that two `=` signs performs the comparison, and one `=` performs the assignment to the variable. 
-
 ### Filtering Rows with Booleans
 
 A Boolean mask tells us which rows have a certain property. What we usually want is to actually filter the DataFrame down to only those rows where Boolean mask is `True`. We can pass the mask to the DataFrame:
@@ -1247,7 +1289,7 @@ is_hosp = (borders.head(10)['HospitalCode'] == 'B120H')
 borders.head(10)[is_hosp]
 ```
 
-### Combining Booleans with And
+### Booleans with Logical Operators
 
 We may want to filter the rows where patients are from hospital `B120H` with certain specialty (e.g. `A1`). Under this case the two comparisons can be combined with `and` to test if both are simultaneously true. Pandas uses the symbol `&` for this. Let's perform the row selection by combining the comparisons for the first 10 rows from `borders`:
 
@@ -1261,9 +1303,7 @@ borders.head(10)[is_hosp & is_spec]
 
 Note that if there are no rows match the conditions, filtering the DataFrame will produce a result with column labels in the header but no actual rows. 
 
-### Combining Booleans with Or
-
-In Python, `or` behaves the same way: it outputs `True` as long as **one of** the combined comparisons is `True`. Pandas uses the symbol `|` instead of `or`. If we use `|` for the example above, which rows will be selected?
+In Python, `or` outputs `True` as long as **one of** the combined comparisons is `True`. Pandas uses the symbol `|` instead of `or`. If we use `|` for the example above, which rows will be selected?
 
 ```{python boolean-mask8, exercise = TRUE, exercise.setup = "pandas-setup"}
 is_hosp = (borders.head(10)['HospitalCode'] == 'B120H') #assign the first condition to a variable
@@ -1275,8 +1315,6 @@ borders.head(10)[is_hosp | is_spec]
 
 We can see the rows where either hospital is `B120H` or specialty is `A1` are filtered this time, as long as one of the conditions is met. 
 
-### Inverting Booleans with Not
-
 What if we want to select the rows where specialty is **not** `A1`? Pandas uses the symbol `~` for `not/non` to exclude the rows we don't want:
 
 ```{python boolean-mask9, exercise = TRUE, exercise.setup = "pandas-setup"}
@@ -1287,7 +1325,7 @@ not_spec = ~is_spec #create a new Boolean mask to invert the pre-existing mask
 borders.head(10)[not_spec]
 ```
 
-You can see the rows with specialty `A1` are excluded. `~` simply swaps `True` and `False`. 
+You can see the rows with specialty `A1` are excluded. `~` simply swaps `True` and `False`.
 
 ### Add/Delete a Column
 
