@@ -77,6 +77,9 @@ systems.
 
 ## IDE
 
+There are several environments where you can run Python code, such as "VS Code", "JupyterLab", "Jupyter Notebook". Here we will give an introduction on VS Code 
+and Jupyter Notebook. 
+
 ### VS Code
 
 Visual Studio Code is an open-source code editor that supports multiple programming languages including Python and R and is highly customisable with extensions. For the purposes of this course we will focus on Python. 
@@ -99,23 +102,29 @@ knitr::include_graphics("images/vs-code.png")
 The layout of the VS Code interface can be divided into 6 different parts:
 
 1. **Activity Bar**: This is located on the far left side of the interface. This lets you access different options and switch between different views on the primary side bar.
+
 2. **Primary Side Bar**: This is located on the left side of the interface to the right of the activity bar. It contains different views like the Explorer, Search, and Source Control to assist you while working on your project.
+
 3. **Editor**: This is located in the center of the interface and is the main place to edit your files. You can open as many editors as you like side by side vertically and horizontally.
-4. **Panel**: This is located at the bottom of the interface below the editor. This contains output, debug information, errors and warnings, and an integrated terminal. To open the terminal the keyboard shortcut is `Ctrl` + `'`.
-5. **Command Palette**: This is located right at the top of the interface. The keyboard shortcut `Ctrl` + `Shift` + `P` brings up the Command Palette and provides access to commands.
+
+4. **Panel**: This is located at the bottom of the interface below the editor. This contains output, debug information, errors and warnings, and an integrated terminal. To open the terminal the keyboard shortcut is *Ctrl + '*.
+
+5. **Command Palette**: This is located right at the top of the interface. The keyboard shortcut *Ctrl + Shift + P* brings up the Command Palette and provides access to commands.
+
 6. **Status Bar**: This is located right at the bottom of the interface and provides information about the open project.
 
 ```{r vscodeoverview, fig.align='center', out.width="100%"}
 knitr::include_graphics("images/vs-code-overview.png")
 ```
 
-##### Opening files and folders
+##### Opening Files and Folders
 
-Once your session opens you can go ahead and open a folder by either clicking on the folder in the explorer pane and then "Open Folder". You can open a file using the keyboard shortcut (`Ctrl` + `O`). You can create a new file by pressing the "New File" button located to the right of your folder name.
+Once your session opens you can go ahead and open a folder by either clicking on the folder in the explorer pane and then "Open Folder". You can open a file using the keyboard shortcut (*Ctrl + O*). You can create a new file by pressing the "New File" button located to the right of your folder name.
 
 ```{r vscodefile, fig.align='center', out.width="40%"}
 knitr::include_graphics("images/vs-code-file.png")
 ```
+
 The file path for your home directory (`~` in R Studio) is `/mnt/homes/your_username/`. The stats drive can be accessed the same as R Studio: `/conf/...`.
 </br>
 
@@ -150,7 +159,7 @@ To create your first venv follow these instructions:
 
 4. Once you have created your environment you will need to activate it. If your venv is in your current folder enter the following into the terminal `source .venv/bin/activate`. If your venv is outwith your current folder you will need to specify the file path like the following `source your_file_path/.venv/bin/activate`.
 
-5. You can refresh your VS Code to make sure your venv has been detected. Press `Ctrl` + `Shift` + `P` and search Developer reload window. You should see .venv as part of the terminal line. If venv has not been detect you may need to press `Ctrl` + `Shift` + `P`, search "Python: Select Interpreter" and manually select your venv.
+5. You can refresh your VS Code to make sure your venv has been detected. Press *Ctrl + Shift + P* and search Developer reload window. You should see .venv as part of the terminal line. If venv has not been detect you may need to press *Ctrl + Shift + P*, search "Python: Select Interpreter" and manually select your venv.
 ```{r vscodevenv, fig.align='center', out.width="100%"}
 knitr::include_graphics("images/vs-code-venv.png")
 ```
@@ -170,7 +179,7 @@ VS Code provides multiple ways to run code, with different approaches being more
 
 ##### Running an entire script
 
-To execute the full script you can type the following into the terminal and press enter. The easiest way to open the terminal is the keyboard shortcut (`Ctrl` + `'`).
+To execute the full script you can type the following into the terminal and press enter. The easiest way to open the terminal is the keyboard shortcut (*Ctrl + '*).
 ```{python terminal, eval = FALSE, echo = TRUE}
 python your_file_name.py
 ```
@@ -179,7 +188,7 @@ Another way to run the whole script is to use the run Python file button at the 
 
 ##### Running code snippets interactively
 
-If you wish to run snippets of your code or run it line by line you can do this using a Python Interactive Window. By pressing `Shift` + `Enter` on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press `Shift` + `Enter`. This is very similar to running code in RStudio by pressing `Ctrl` + `Enter`.
+If you wish to run snippets of your code or run it line by line you can do this using a Python Interactive Window. By pressing *Shift + Enter* on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press *Shift + Enter*. This is very similar to running code in RStudio by pressing *Ctrl + Enter*.
 
 When you run code interactively you have to make sure the kernel selected in the right hand corner of the interactive pane is the correct venv.
 
@@ -189,7 +198,7 @@ knitr::include_graphics("images/vs-code-interactive.png")
 
 ##### Jupyter Notebook in VS Code
 
-You can also use Jupyter Notebook by creating a .ipynb file. Each cell can be executed individually using `Shift` + `Enter` or by pressing the run button. This allows you to create code or markdown snippets. A more detailed introduction of Jupyter Notebook is in the next section.
+You can also use Jupyter Notebook by creating a .ipynb file. Each cell can be executed individually using *Shift + Enter* or by pressing the run button. This allows you to create code or markdown snippets. A more detailed introduction of Jupyter Notebook is in the next section.
 
 When using Jupyter notebooks you have to select a kernel in the top right hand corner of your notebook. You should select the venv you have created for your project.
 
@@ -199,8 +208,6 @@ knitr::include_graphics("images/vs-code-notebook.png")
 
 
 ### Jupyter Notebook
-
-There are several environments where you can run Python code, such as "JupyterLab", "Jupyter Notebook".
 
 Jupyter Notebook is designed for the easy integration of text and Python programming. It provides a more interactive workflow for Python programming, analysis and reporting. Some of its key features are:
 
