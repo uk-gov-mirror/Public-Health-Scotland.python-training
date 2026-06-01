@@ -173,11 +173,11 @@ knitr::include_graphics("images/vs-code-venv.png")
 Note: If you don't activate your Python environment you will probably install your package in the main Python installation.
 
 
-#### Running code
+#### Running Code
 
 VS Code provides multiple ways to run code, with different approaches being more suitable depending on your workflow and the type of task you are performing.
 
-##### Running an entire script
+##### Running an Entire Script
 
 To execute the full script you can type the following into the terminal and press enter. The easiest way to open the terminal is the keyboard shortcut (*Ctrl + '*).
 ```{python terminal, eval = FALSE, echo = TRUE}
@@ -186,7 +186,7 @@ python your_file_name.py
 
 Another way to run the whole script is to use the run Python file button at the top of the editor. This is similar to using source to run a script in RStudio.
 
-##### Running code snippets interactively
+##### Running Code Snippets Interactively
 
 If you wish to run snippets of your code or run it line by line you can do this using a Python Interactive Window. By pressing *Shift + Enter* on a line of code it should open an interactive window as shown below. You can also highlight sections of code and press *Shift + Enter*. This is very similar to running code in RStudio by pressing *Ctrl + Enter*.
 
@@ -350,20 +350,18 @@ There are a number of advantages to having Python scripts run this way. To name 
 * It is easier to debug
 * It is clearer and more readable
 
-However, there are a number of ways to run individual lines of code within a Python script, should that be preferred. In this course, we will touch upon `Jupyter Notebook` in the *IDE* section, where this can be accomplished. 
+There are also a number of ways to run individual lines of code within a Python script as described in the IDE section.
 
 ### Structure
 
 **Indentation** - where indentation in other programming languages are included as a style preference, indentation in Python is extremely important, as it indicates what blocks of code should be run. 
 
-Without proper indentations, your code will not run. Try to run the following code with improper indentation:
+Without proper indentations, your code will not run. Try to run the following code with improper indentation and see what the syntax error will be shown:
 
 ```{python indentation1, exercise = TRUE}
 if 1 < 10:
 print("One is less than ten.")
 ```
-
-Note the syntax error which was shown:
 
 Now run the code with the proper indentation:
 
@@ -420,7 +418,6 @@ The following are examples of all the arithmetic operators available in Python.
 
 ```{r, echo = FALSE}
 operators_table <- data.frame(
-  "Precedence" = c(1, 2, 3, 4, 5, 6, 7, 8, 9), 
   "Operator" = c("`**`", 
                  "`%`", 
                  "`*` `/`", 
@@ -446,7 +443,7 @@ knitr::kable(operators_table)
 
 #### Strings
 
-Strings in Python are arrays of unicode characters. However, Python does not have a character data type, a single character is simply a string with a length of 1. Strings can be declared with either single or double quotes, and square brackets can be used to access elements of the string.
+Strings in Python are arrays of unicode characters. However, Python does not have a character data type, a single character is simply a string with a length of 1. Strings can be declared with either single or double quotes, and square brackets `[]` can be used to access elements of the string.
 
 ```{python strings1, exercise = TRUE}
 a = "Hello, World!"
@@ -468,6 +465,10 @@ multiline
 The `print()` function interprets these escape characters as expected. 
 
 ```{python strings3, exercise = TRUE}
+multiline = '''White space is
+preserved
+in multiline strings.'''
+
 print(multiline)
 ```
 
@@ -479,7 +480,7 @@ nested_quotes
 print(nested_quotes)
 ```
 
-For strings, the plus `+` sign will concatenate two strings into one, and the asterisk `*` will repeat a string a set number of times. Have a look and click 'Run Code' below to see the output.
+For strings, the plus `+` sign will concatenate two strings into one, and the asterisk `*` will repeat a string a set number of times. 
 
 ```{python string5, exercise = TRUE}
 print('Hello' + ' ' + 'World')
