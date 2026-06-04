@@ -710,7 +710,7 @@ else:
 
 For loops are used for iteration over a sequence (that is either a list, a tuple, a dictionary, a set, or a string). 
 
-There are multiple ways to use for loops.
+There are multiple ways to use `for` loops.
 
 #### Iterating Over a List:
 
@@ -734,7 +734,7 @@ for index, fruits in enumerate(list_of_fruits):
 
 #### Iterating Over a String:
 
-Iterating over a string with print() can print each character in the string in order:
+Iterating over a string with `print()` can print each character in the string in order:
 
 ```{python forloop3, exercise=TRUE}
 for char in "Python":
@@ -811,7 +811,7 @@ It would not print "banana" as the loop was stopped when x equals to "banana", a
 #### Nested Loops
 
 ```{python forloop7, exercise=TRUE}
-adjective = ["red", "big", "tasty"]
+adjective = ["small", "big", "tasty"]
 fruits = ["apple", "banana", "cherry"]
 
 for x in adjective:
