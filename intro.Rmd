@@ -16,7 +16,7 @@ runtime: shiny_prerendered
 # See here for learnr package documentation: https://rstudio.github.io/learnr/
 
 # Include packages here that are required throughout the training
-
+Sys.unsetenv("RETICULATE_PYTHON") # This line is needed to run on PWB.
 library(learnr)
 library(gradethis)
 library(reticulate)
@@ -553,9 +553,9 @@ myfloat
 
 There are various data structures which are built into Python. Some of the main ones are:
 
-- Sequence Types: list, tuple, range
-- Mapping Type: dict
-- Set Types: set, frozenset
+- **Sequence Types:** list, tuple, range
+- **Mapping Type:** dict
+- **Set Types:** set, frozenset
 
 #### Lists
 
