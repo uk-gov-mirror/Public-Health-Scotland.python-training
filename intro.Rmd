@@ -836,9 +836,8 @@ Functions are made up of the:
 * Function body
 
 ```{python function1, eval = FALSE, echo = TRUE}
-def <function_name>():
+def function_name():
   function_body
-
 ```
 
 Example:
@@ -864,10 +863,10 @@ Parameters are variables which are listed inside the parentheses in the function
 The values passed into a function are called arguments. 
 
 ```{python function4, exercise=TRUE}
-def greet(name):
+def greet(name): # set the parameter as name
   print("Hello, " + name + "!")
   
-greet("Bob")
+greet("Bob") # argument as Bob
 ```
 
 You can also pass through multiple arguments:
@@ -891,7 +890,7 @@ result = add(1, 2, 3)
 print(result)
 ```
 
-#### Python Library
+### Python Library
 
 Python library is a collection of functions and methods that allows you to perform lots of actions without writing your own code. For example, “pandas” is a Python library for data manipulation and analysis, which is used a lot in this training guidance. 
 
@@ -971,36 +970,18 @@ borders3.head()
 
 ### Mean/Median & Summary
 
-* `mean()` and `median()` are passed arrays of values (usually from a data frame) to return the mean and median value.
+* `mean()` and `median()` are passed arrays of values (usually from a dataframe) to return the mean and median value.
 
 * `describe()` returns all summary statistics based on a given array.
 
 For example, `df["column_name"].median()` will generate the `median` value of the values within the stated column.
 
-In the exercise below, you have the borders data-set loaded as `borders`. See if you can get the mean value for `LengthOfStay`. Please store the mean value in a variable called `mean_value`, and print that variable. Use the hint button if you need some help.
+In the exercise below, you have the borders dataset loaded as `borders`. See if you can get the mean value for `LengthOfStay`. Please store the mean value in a variable called `mean_value`, and print that variable. Use the hint button if you need some help.
 
 ```{python mean, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders
-```
-
-```{python mean-hint-1}
-mean_value = borders["LengthOfStay"].mean()
-```
-
-```{python mean-hint-2}
 mean_value = borders["LengthOfStay"].mean()
 
 print(mean_value)
-```
-
-```{python mean-solution}
-mean_value = borders["LengthOfStay"].mean()
-
-print(mean_value)
-```
-
-```{python mean-check}
-grade_code()
 ```
 
 ### Frequencies & Crosstabs
@@ -1020,36 +1001,15 @@ pd.crosstab(df["column_nameA"], df["column_nameB"])
 pd.crosstab(df["column_nameA"], df["column_nameB"], margins = True)
 ```
 
-Create a crosstab for `HospitalCode` and `Sex`, add column and row totals. Use the hint button if you need some help.
+Create a crosstab for `HospitalCode` and `Sex`, add column and row totals:
 
 ```{python freq, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders
-```
-
-```{python freq-hint-1}
-...pd.crosstab(...)
-```
-
-```{python freq-hint-2}
-pd.crosstab(borders["HospitalCode"], borders["Sex"]...)
-```
-
-```{python freq-hint-3}
 pd.crosstab(borders["HospitalCode"], borders["Sex"], margins = True)
 ```
-
-```{python freq-solution}
-pd.crosstab(borders["HospitalCode"], borders["Sex"], margins = True)
-```
-
-```{python freq-check}
-grade_code()
-```
-
 
 ## Wrangle – Part 1
 
-For the next sections, we will focus on using the pandas module to manipulate data and data frames.
+For the next sections, we will focus on using the pandas module to manipulate data and dataframes.
 
 ### Row Indexes
 
@@ -1221,7 +1181,7 @@ where
 
 - **`df`** is your Pandas DataFrame.
 - **`query()`** is the method you’re calling.
-- **'condition'** is a string where you define your filtering logic.
+- **`'condition'`** is a string where you define your filtering logic.
 
 For example we want to filter the `HospitalCode` is `B120H` for the first 10 rows 
 from `borders`. 
@@ -1299,7 +1259,7 @@ borders.head(10)[is_hosp]
 
 ### Booleans with Logical Operators
 
-We may want to filter the rows where patients are from hospital `B120H` with certain specialty (e.g. `A1`). Under this case the two comparisons can be combined with `and` to test if both are simultaneously true. Pandas uses the symbol `&` for this. Let's perform the row selection by combining the comparisons for the first 10 rows from `borders`:
+We may want to filter the rows where patients are from hospital `B120H` with certain specialty (e.g. `A1`). Similar to use `query()`, the two comparisons can be combined with `and` to test if both are simultaneously true. Pandas uses the symbol `&` for this. Let's perform the row selection by combining the comparisons for the first 10 rows from `borders`:
 
 ```{python boolean-mask7, exercise = TRUE, exercise.setup = "pandas-setup"}
 is_hosp = (borders.head(10)['HospitalCode'] == 'B120H') #assign the first condition to a variable
@@ -1391,7 +1351,7 @@ borders_10 = borders.head(10)
 borders_10.drop(borders_10.columns[[0, 1]], axis = 1)
 ```
 
-Besides, if you want to delete the column without having to reassign `df` you can do:
+Besides, if you want to delete the column without having to reassign `df` you can add `inplace = True` as mentioned before:
 
 ```{python delete-column4, eval = FALSE, echo = TRUE}
 # Delete a single column
@@ -1414,12 +1374,12 @@ There are a number of ways to manipulate strings in Python. Here are a few metho
 df['column_name'] = df['column_name'].str.split('delimiter')
 ```
 
-For example, we would like to split the strings in the column `ManagementofPatient` at the value `a`.
+For example, we would like to split the strings in the column `birthdate` at the value `/`.
 
 ```{python split_value_example, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders_data['ManagementofPatient'] = borders_data['ManagementofPatient'].str.split('a')
+borders['birthdate'] = borders['birthdate'].str.split('/')
 
-print(borders_data)
+print(borders['birthdate'])
 ```
 
 There are some other commonly used string methods:
@@ -1440,12 +1400,10 @@ df['column_name'] = df['column_name'].str.lower()
 df['column_name'] = df['column_name'].str.replace('old_value','new_value')
 ```
 
-In the exercise below, read the borders_inc_age csv in, then replace all instances of `B120H` in the `HospitalCode` column with the phrase `BRILLIANT`.
+For example, we want to replace all instances of `B120H` in the `HospitalCode` column with `MarkedHospital`.
 
 ```{python manipulate-string, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders = pd.read_csv("data/borders_inc_age.csv")
-
-borders['HospitalCode'] = borders['HospitalCode'].str.replace('B120H','BRILLIANT')
+borders['HospitalCode'] = borders['HospitalCode'].str.replace('B120H','MarkedHospital')
 
 # View the result
 borders.head(10)
@@ -1467,15 +1425,10 @@ For example, in the case that you wish to find all the values which are less tha
 df.loc[df['column_name'] < 5, 'column_name'] = 'Small number'
 ```
 
-As you can imagine, this methods affords a great level of versatility in data analysis.
-
-In the exercise below, read in the `borders_inc_age` csv file, and recode all instances of `B120H` in the `HospitalCode` column to `Recoded`.
-
+We can repeat the example of recoding all instances of `B120H` in the `HospitalCode` column to `MarkedHospital`.
 
 ```{python recode-exercise, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders = pd.read_csv("data/borders_inc_age.csv")
-
-borders.loc[borders['HospitalCode'] == 'B120H', 'HospitalCode'] = 'Recoded'
+borders.loc[borders['HospitalCode'] == 'B120H', 'HospitalCode'] = 'MarkedHospital'
 
 # View the result
 borders.head(10)
@@ -1489,18 +1442,16 @@ Sometimes we would like to rename specific columns in a data frame:
 df.rename(columns = {'old_column_name':'new_column_name'})
 ```
 
-For example, the column `HospitalCode` in `borders_data` doesn't follow the style guide, let's rename it to `Hospital_Code`. 
+For example, let's rename `HospitalCode` to `Hospital_Code` in `borders`.
 
 ```{python rename-exercise, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders = pd.read_csv("data/borders_inc_age.csv")
-
 borders = borders.rename(columns = {'HospitalCode':'Hospital_Code'})
 
 # View the result
 borders.head(10)
 ```
 
-### Group By
+### Group By and Aggregate
 
 The `groupby()` function in Pandas allows us to split a Dataframe into groups based on one or more keys, such as column values, and then perform operations on them, such as aggregations or transformations:
 
@@ -1514,8 +1465,6 @@ Read in the `borders_inc_age` csv. Then, apply the `groupby()` function to the `
 borders = pd.read_csv("data/borders_inc_age.csv")
 borders.groupby('HospitalCode')
 ```
-
-### Aggregate Dataframe
 
 After assigning `groupby()` function to a new variable, we can apply the aggregate `agg()` function to conduct operations on specific columns.
 
@@ -1538,17 +1487,16 @@ grouped_variable.agg({'column1' : ['function1','function2','function3'],
 
 For example, We want to find the `mean`, `max`, `count` and `sum` of the `LengthOfStay` variables, grouped by `HospitalCode`. 
 
-First let's store the above `borders_data.groupby('HospitalCode')` into a new variable called `grouped_by_hospital_code`, and then use `agg()` to get the results. 
-```{python aggregate-example, eval = FALSE, echo = TRUE}
-grouped_by_hospital_code.agg({'LengthOfStay': ['mean','max','count','sum']})
+First let's store the above `borders.groupby('HospitalCode')` into a new variable called `group_by_hospital_code`, and then use `agg()` to get the results. 
+
+```{python aggregate-exercise1, exercise = TRUE, exercise.setup = "pandas-setup"}
+group_by_hospital_code = borders.groupby('HospitalCode')
+group_by_hospital_code.agg({'LengthOfStay': ['mean','max','count','sum']})
 ```
 
-We could also more easily use the `describe()` function within the `agg()` function detailed above.
+We could also more easily use the `describe()` function within the `agg()` to get more statistical results:
 
-Give that a go: Read in the `borders_inc_age` csv file, then group by `HospitalCode`, storing that into a variable called `grouped_by_hospital_code`. Aggregate using the method above. Use the `describe()` function to find important values from the `LengthOfStay` column. 
-
-```{python aggregate-exercise, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders = pd.read_csv("data/borders_inc_age.csv")
+```{python aggregate-exercise2, exercise = TRUE, exercise.setup = "pandas-setup"}
 group_by_hospital_code = borders.groupby('HospitalCode')
 group_by_hospital_code.agg({'LengthOfStay':'describe'})
 ```
@@ -1559,25 +1507,24 @@ group_by_hospital_code.agg({'LengthOfStay':'describe'})
 knitr::include_graphics("images/join_python.png")
 ```
 
-* `left` - taking all records from the "left", `data_frame_1`, and adding matched records from the "right", `data_frame_2`, introducing `NaN` where the "right", `data_2` had no matching records
-* `right` - taking all records from the "right", `data_frame_2`, and adding matched records from the "left", `data_frame_1`, introducing `NaN` where the "left", `data_frame_1` had no matching records
-* `inner` - producing only records where there were matches on both given data sets
-* `full` - retaining all records from both data sets and introducing `na` on either one where there was no matching records
+- **left** - taking all records from the "left", `data_frame_1`, and adding matched records from the "right", `data_frame_2`, introducing `NaN` where the "right", `data_2` had no matching records
+- **right** - taking all records from the "right", `data_frame_2`, and adding matched records from the "left", `data_frame_1`, introducing `NaN` where the "left", `data_frame_1` had no matching records
+- **inner** - producing only records where there were matches on both given data sets
+- **full/outer** - retaining all records from both data sets and introducing `na` on either one where there was no matching records
 
 By default, the merge type will be `inner` unless stated otherwise.
 
-You define the merge/join type by defining the `how = '<type>'`.
+You define the merge/join type by defining the `how = 'join_type'`.
 
-You should further define what common columns/variables the data frames should merge `on` by defining the `on = ['column']`
+You should further define what common columns/variables the DataFrames should merge `on` by defining the `on = ['column']`:
 
 ```{python merge, eval = FALSE, echo = TRUE}
 df1.merge(df2, how = 'join_type', on = ['column1' , 'column2'])
 ```
 
-2 new data-sets have been loaded, `baby5` and `baby6`, these have common variables `FAMILYID` and `DOB`. Using a `left` join, merge them together. 
+Two data-sets have been loaded, `baby5` and `baby6`, which have common variables `FAMILYID` and `DOB`. Using a `left` join, merge them together. 
 
 ```{python merge-exercise, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders_data = pd.read_csv("data/borders_inc_age.csv")
 baby5 = pd.read_csv("data/Baby5.csv")
 baby6 = pd.read_csv("data/Baby6.csv")
 
