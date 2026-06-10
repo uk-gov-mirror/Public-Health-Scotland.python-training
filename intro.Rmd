@@ -907,12 +907,13 @@ Python library is a collection of functions and methods that allows you to perfo
 
 The Python language can be used for data analysis. The first step in performing analysis is to access your dataframe (i.e. your dataset). This section will introduce you how to import and export datasets. 
 
-### Read and Save .csv Files
+### Read and Save .csv/.xlsx Files
 
-Various commonly used file formats can be read using Python, such as .csv and .xls files. You can import these files by using the “pandas” library. The general code is 
+Various commonly used file formats can be read using Python, such as .csv and .xlsx files. You can import these files by using the “pandas” library. The general code is 
 
-```{python csv-read, eval = FALSE, echo = TRUE}
-dataset_name = pd.read_csv("filename.csv")
+```{python file-read, eval = FALSE, echo = TRUE}
+dataset_name = pd.read_csv("filepath/filename.csv")
+dataset_name = pd.read_excel("filepath/filename.xlsx")
 ```
 
 There are three pieces to this code:
@@ -938,20 +939,38 @@ Have a look and click 'Run Code' below to see the output.
 
 ```{python csv-read-example, exercise = TRUE}
 # Import pandas library
-import pandas as pd 
+import pandas as pd
+
 # Read in the dataset
-borders = pd.read_csv("data/borders_inc_age.csv") 
+borders = pd.read_csv("data/borders_inc_age.csv")
+
 # Check the first few rows of the dataset. Default is 5 rows. 
 borders.head() 
 ```
 
 If you make any changes to borders and would like to save it as a new .csv file, use the following command:
 
-```{python csv-save, eval = FALSE, echo = TRUE}
-borders.to_csv("file path and name")
+```{python file-save, eval = FALSE, echo = TRUE}
+borders.to_csv("filepath/filename.csv")
+borders.to_excel("filepath/filename.xlsx")
 ```
 
-#### Read Specific Columns
+### Read Web Files
+
+The libraries/functions used will vary depending on the structure of the data hosted on the web. This example uses a CSV hosted on [Open Data Platform](https://www.opendata.nhs.scot/) so the process in very similar to before.
+
+```{python web-read-example, exercise = TRUE}
+# Import pandas library
+import pandas as pd
+
+# Read in the dataset
+hosp = pd.read_csv("https://www.opendata.nhs.scot/dataset/cbd1802e-0e04-4282-88eb-d7bdcfb120f0/resource/c698f450-eeed-41a0-88f7-c1e40a568acc/download/current_nhs_hospitals_in_scotland_010720.csv")
+
+# Check the first few rows of the dataset. Default is 5 rows. 
+hosp.head()
+```
+
+### Read Specific Columns
 
 It is possible to omit certain columns from a dataframe when importing a file by using **usecols** command:
 
