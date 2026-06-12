@@ -127,7 +127,7 @@ knitr::include_graphics("images/vs-code-overview.png")
 
 ##### Opening Files and Folders
 
-Once your session opens you can go ahead and open a folder by either clicking on the folder in the explorer pane and then "Open Folder". You can open a file using the keyboard shortcut (*Ctrl + O*). You can create a new file by pressing the "New File" button located to the right of your folder name.
+Once your session opens you can go ahead and open a folder by either clicking on the folder in the explorer pane and then "Open Folder". You can open a file using the keyboard shortcut *Ctrl + O*. You can create a new file by pressing the "New File" button located to the right of your folder name.
 
 ```{r vscodefile, fig.align='center', out.width="40%"}
 knitr::include_graphics("images/vs-code-file.png")
@@ -187,7 +187,7 @@ VS Code provides multiple ways to run code, with different approaches being more
 
 ##### Running an Entire Script
 
-To execute the full script you can type the following into the terminal and press enter. The easiest way to open the terminal is the keyboard shortcut (*Ctrl + '*).
+To execute the full script you can type the following into the terminal and press enter. The easiest way to open the terminal is the keyboard shortcut *Ctrl + '*.
 ```{python terminal, eval = FALSE, echo = TRUE}
 python your_file_name.py
 ```
@@ -968,6 +968,27 @@ hosp = pd.read_csv("https://www.opendata.nhs.scot/dataset/cbd1802e-0e04-4282-88e
 
 # Check the first few rows of the dataset. Default is 5 rows. 
 hosp.head()
+```
+
+### Read Databases (SMRA)
+
+There is a guidance on how to retrieve data from SMRA [here](https://github.com/Public-Health-Scotland/python_demo_databases) if you 
+clone the repository and follow the steps in README. 
+
+The main code to get SMRA data are as follows:
+
+```{python smra_read, eval = FALSE, echo = TRUE}
+# import class from python script
+from my_db import MyOracleDB
+
+# create an object
+my_oracle_object = MyOracleDB()
+# open a connection
+my_oracle_object.connect()
+# print a retrieved datafraame
+print(my_oracle_object.query_to_df("your sql query"))
+# close connection
+my_oracle_object.close()
 ```
 
 ### Read Specific Columns
