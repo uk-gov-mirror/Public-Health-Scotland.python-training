@@ -39,7 +39,7 @@ import pandas as pd
 
 borders = pd.read_csv("data/borders_inc_age.csv")
 
-borders2 = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'HospitalCode', 'Specialty']) 
+borders_columns = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'HospitalCode', 'Specialty']) 
 ```
 
 ```{r phs-logo, echo=FALSE, fig.align='right', out.width="40%"}
@@ -985,24 +985,24 @@ my_oracle_object.close()
 
 ### Read Specific Columns
 
-It is possible to omit certain columns from a dataframe when importing a file by using **usecols** command:
+It is possible to omit certain columns from a dataframe when importing a file by passing a list of columns to **usecols**:
 
 ```{python csv-read-columns1, exercise = TRUE, exercise.setup = "pandas-setup"}
 # Read in the dataset with specific columns
-borders2 = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'HospitalCode', 'Specialty']) 
+borders_columns = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'HospitalCode', 'Specialty']) 
 
 # Check the first few rows of the dataset. Default is 5 rows. 
-borders2.head() 
+borders_columns.head() 
 ```
 
 It is also possible to rearrange the columns within an imported dataframe. The columns in the example above can be rearranged using the following code:
 
 ```{python csv-read-columns2, exercise = TRUE, exercise.setup = "pandas-setup"}
 # Rearrange the columns by supplying multiple column names in a list using the inner square brackets.
-borders3 = borders2[['URI', 'Specialty', 'HospitalCode']] 
+borders_rearrange = borders_columns[['URI', 'Specialty', 'HospitalCode']] 
 
 # Check the first few rows of the dataset. Default is 5 rows. 
-borders3.head()
+borders_rearrange.head()
 ```
 
 
