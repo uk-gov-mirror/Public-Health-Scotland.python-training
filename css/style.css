@@ -1,16 +1,78 @@
 @import url("https://fonts.googleapis.com/css?family=Open Sans");
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --phs-logo: url("../images/phs-logo-white.svg");
+    --phs-color-bg: #1a1a2e;
+    --phs-color-fg: #e8e8e8;
+    --phs-h: #80BCEA;
+    --phs-code-bg: #252542;
+    --phs-btn-primary: #252542;  
+    --phs-btn-success: #252542;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --phs-logo: url("../images/phs-logo.svg");
+    --phs-color-bg: #ffffff;
+    --phs-color-fg: #333333;
+    --phs-h: #433683;
+    --phs-code-bg: #ffffff;
+    --phs-btn-primary:#0097d7;
+    --phs-btn-success: #80ba27;
+  }
+}
+
+.custom-navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.phs-logo {
+  background-image: var(--phs-logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+  width: 300px;
+  height: 100px;
+}
+
+.tutorial-exercise-code-editor {
+  background-color: var(--phs-code-bg) !important;
+  color: var(--phs-color-fg);
+}
+
+pre, code {
+  background-color: var(--phs-code-bg) !important;
+  color: var(--phs-color-fg);
+}
+
+.topicsList .topic .nav-link {
+  color: #808080;
+	font-weight: bold;
+}
+
+.topicsList .topic.current {
+  background-color: var(--phs-color-fg);
+  color: var(--phs-color-bg) !important;
+}
+
+body {
+  background-color: var(--phs-color-bg);
+  color: var(--phs-color-fg);
+}
+
 body, h1, h2, h3, h4, h5, h6, p, button {
   font-family: 'Open Sans';
 }
 
-h1, h2 {
-  color: #433683;
-}
-
-h3, h4, h5 {
-  color: #bd27b9;
+h1, h2, h3, h4, h5 {
+  color: var(--phs-h);
+  font-weight: bold;
 }
 
 code {
@@ -18,20 +80,42 @@ code {
 }
 
 th {
-  color: #433683;
+  color: var(--phs-h);
 }
 
 .panel-heading {
-  color: #bd27b9;
+  color: var(--phs-h);
   padding-bottom: 10px;
 }
 
 .btn-primary {
-  background-color: #0097d7;
+  background-color: var(--phs-btn-primary);
+  color: var(--phs-color-fg);
+  border-color: var(--phs-color-fg);
 }
 
 .btn-success {
-  background-color: #80ba27;
+  background-color: var(--phs-btn-success);
+  color: var(--phs-color-fg);
+  border-color: var(--phs-color-fg);
+}
+
+.btn-default {
+  background-color: var(--phs-btn-success);
+  color: var(--phs-color-fg);
+  border-color: var(--phs-color-fg);
+}
+
+.btn-default:hover {
+  background-color: var(--phs-code-bg);
+  color: var(--phs-color-fg);
+  border-color: var(--phs-color-fg);
+}
+
+.btn:hover, .btn:focus, .btn.focus {
+  background-color: var(--phs-code-bg);
+  color: var(--phs-color-fg);
+  border-color: var(--phs-color-fg);
 }
 
 .tidyverse-logo {

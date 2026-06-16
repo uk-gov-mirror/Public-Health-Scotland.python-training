@@ -15,11 +15,18 @@ runtime: shiny_prerendered
 
 # See here for learnr package documentation: https://rstudio.github.io/learnr/
 
+# Unset forced Python (PWB) if present
+if (nzchar(Sys.getenv("RETICULATE_PYTHON"))) {
+  Sys.unsetenv("RETICULATE_PYTHON")
+}
+
 # Include packages here that are required throughout the training
-Sys.unsetenv("RETICULATE_PYTHON") # This line is needed to run on PWB.
 library(learnr)
 library(gradethis)
 library(reticulate)
+
+rmarkdown::shiny_prerendered_clean("intro.Rmd")
+unlink("intro_cache", recursive = TRUE)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -27,8 +34,10 @@ tutorial_options(
   exercise.checker = gradethis::grade_learnr
 )
 
+# Create environment only if it doesn’t exist
 reticulate::virtualenv_create(envname = "pyenv")
-reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))
+reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))  
+# Activate pyenv virtual environment
 reticulate::use_virtualenv("pyenv", required = TRUE)
 ```
 
@@ -42,9 +51,9 @@ borders = pd.read_csv("data/borders_inc_age.csv")
 borders_columns = pd.read_csv("data/borders_inc_age.csv", usecols = ['URI', 'HospitalCode', 'Specialty']) 
 ```
 
-```{r phs-logo, echo=FALSE, fig.align='right', out.width="40%"}
-knitr::include_graphics("images/phs-logo.png")
-```
+<div class="custom-navbar">
+  <div class="phs-logo"></div>
+</div>
 
 ## Introduction
 
