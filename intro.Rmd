@@ -25,6 +25,9 @@ library(learnr)
 library(gradethis)
 library(reticulate)
 
+rmarkdown::shiny_prerendered_clean("intro.Rmd")
+unlink("intro_cache", recursive = TRUE)
+
 knitr::opts_chunk$set(echo = FALSE)
 
 tutorial_options(
@@ -32,10 +35,8 @@ tutorial_options(
 )
 
 # Create environment only if it doesn’t exist
-if (!reticulate::virtualenv_exists("pyenv")){
-  reticulate::virtualenv_create(envname = "pyenv")
-  reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))  
-}
+reticulate::virtualenv_create(envname = "pyenv")
+reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))  
 # Activate pyenv virtual environment
 reticulate::use_virtualenv("pyenv", required = TRUE)
 ```
