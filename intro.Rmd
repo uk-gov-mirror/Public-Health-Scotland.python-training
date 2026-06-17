@@ -24,7 +24,9 @@ if (nzchar(Sys.getenv("RETICULATE_PYTHON"))) {
 library(learnr)
 library(reticulate)
 
+# Clear Prerendered Output
 rmarkdown::shiny_prerendered_clean("intro.Rmd")
+# Clear Knitr Cache
 unlink("intro_cache", recursive = TRUE)
 
 knitr::opts_chunk$set(echo = FALSE)
