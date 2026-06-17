@@ -22,7 +22,6 @@ if (nzchar(Sys.getenv("RETICULATE_PYTHON"))) {
 
 # Include packages here that are required throughout the training
 library(learnr)
-library(gradethis)
 library(reticulate)
 
 rmarkdown::shiny_prerendered_clean("intro.Rmd")
@@ -1586,6 +1585,8 @@ baby5.merge(baby6, how = 'left', on = ['FAMILYID','DOB'])
 ### Help
 
 - [PHS Data and Intelligence Forum - Python](https://teams.microsoft.com/l/channel/19%3Ade96dc64d9204809b76b068c71ba3543%40thread.tacv2/Python?groupId=ec4250f9-b70a-4f32-9372-a232ccb4f713&tenantId=10efe0bd-a030-4bca-809c-b5e6745e499a)
+
+- [KIND Network Open Source Week: Introduction to Python](https://vimeo.com/1140086541)
 
 - [PEP 8 Style Guide for Python](https://peps.python.org/pep-0008/)
 
