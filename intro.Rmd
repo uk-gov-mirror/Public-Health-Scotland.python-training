@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Create environment only if it doesn’t exist
 reticulate::virtualenv_create(envname = "pyenv")
-reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))  
+reticulate::virtualenv_install("pyenv", requirements = "requirements.txt")  
 # Activate pyenv virtual environment
 reticulate::use_virtualenv("pyenv", required = TRUE)
 ```
