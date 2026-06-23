@@ -31,10 +31,6 @@ unlink("intro_cache", recursive = TRUE)
 
 knitr::opts_chunk$set(echo = FALSE)
 
-tutorial_options(
-  exercise.checker = gradethis::grade_learnr
-)
-
 # Create environment only if it doesn’t exist
 reticulate::virtualenv_create(envname = "pyenv")
 reticulate::virtualenv_install("pyenv", packages = c("pandas==2.3.3"))  
@@ -1026,12 +1022,12 @@ borders_rearrange.head()
 
 For example, `df["column_name"].median()` will generate the `median` value of the values within the stated column.
 
-In the exercise below, you have the borders dataset loaded as `borders`. See if you can get the mean value for `LengthOfStay`. Please store the mean value in a variable called `mean_value`, and print that variable. Use the hint button if you need some help.
+In the example below, we would like to get the mean value for `LengthOfStay` from `borders`:
 
 ```{python mean, exercise = TRUE, exercise.setup = "pandas-setup"}
-mean_value = borders["LengthOfStay"].mean()
+mean_value = borders["LengthOfStay"].mean() # Store the value in a variable
 
-print(mean_value)
+print(mean_value) # Print out to see the result
 ```
 
 ### Frequencies & Crosstabs
@@ -1051,7 +1047,7 @@ pd.crosstab(df["column_nameA"], df["column_nameB"])
 pd.crosstab(df["column_nameA"], df["column_nameB"], margins = True)
 ```
 
-Create a crosstab for `HospitalCode` and `Sex`, add column and row totals:
+We would like to create a crosstab for `HospitalCode` and `Sex`, add column and row totals:
 
 ```{python freq, exercise = TRUE, exercise.setup = "pandas-setup"}
 pd.crosstab(borders["HospitalCode"], borders["Sex"], margins = True)
