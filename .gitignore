@@ -8,3 +8,10 @@ rsconnect/**
 .DS_Store
 
 *.html
+
+# posit publisher deployment folder
+.posit/
+
+# renv
+renv/library/
+renv/staging/
