@@ -55,7 +55,7 @@ This project can be deployed in Posit connect using Posit Publisher Positron ext
 
 -  You will need an API token to authenticate your permissions (Viewer/Publisher) in Posit Connect
 -  Ask for the current Posit connect project URL if it has already been deployed.
--  Check Folder content table to see which files are required for deployment (if you upload everythin you will waste space)
+-  Check Folder content table to see which files are required for deployment (if you upload everything you will waste space)
 
 ### Folder content
 
