@@ -382,7 +382,7 @@ Indentation not only affords proper functionality, but it also enhances readabil
 
 Variables are containers for storing data values. A variable is created the moment you first assign a value to it using `=`.
 
-```{python assignvariable, exercise=TRUE}
+```{python assignvariable, exercise = TRUE}
 x = 5
 y = "John"
 print(x)
@@ -626,7 +626,7 @@ As is the case in most other programming languages, control flow is where decisi
 
 `if` is the most common comparison operator used in Python.
 
-```{python if1, exercise=TRUE}
+```{python if1, exercise = TRUE}
 a = 5
 b = 100
 
@@ -643,7 +643,7 @@ There are some further statements when using `if` that you should be familiar wi
 
 - `else` keyword catches anything which isn't caught by the preceding conditions. It is executed if the preceding `if` and `elif` statements are evaluated to `False`.
 
-```{python if2, exercise=TRUE}
+```{python if2, exercise = TRUE}
 a = 100
 b = 35
 
@@ -657,16 +657,89 @@ else:
 
 If you have only one statement to execute, you can put it on the same line as the `if` statement.
 
-```{python if3, exercise=TRUE}
+```{python if3, exercise = TRUE}
 a = 8
 b = 3
 if a > b: print("a is greater than b")
 ```
 
+### The Match Statement
+
+Instead of writing many `if...else` statements, you can use the `match` statement. It selects one of many code blocks to be executed:
+
+```{python match1, eval = FALSE, echo = TRUE}
+match expression:
+  case x:
+    code block
+  case y:
+    code block
+  case z:
+    code block
+```
+
+The example below uses the weekday number to print the weekday name:
+
+```{python match2, exercise = TRUE}
+day = 4
+match day:
+  case 1:
+    print("Monday")
+  case 2:
+    print("Tuesday")
+  case 3:
+    print("Wednesday")
+  case 4:
+    print("Thursday")
+  case 5:
+    print("Friday")
+  case 6:
+    print("Saturday")
+  case 7:
+    print("Sunday")
+```
+
+You can use the underscore character `_` as the last case value if you want a code block to execute when there are not other matches:
+
+```{python match3, exercise = TRUE}
+day = 4
+match day:
+  case 6:
+    print("Today is Saturday")
+  case 7:
+    print("Today is Sunday")
+  case _:
+    print("Looking forward to the Weekend")
+```
+
+You can use the pipe character `|` as an `or` operator to check for more than one value match in one `case`:
+
+```{python match4, exercise = TRUE}
+day = 4
+match day:
+  case 1 | 2 | 3 | 4 | 5:
+    print("Today is a weekday")
+  case 6 | 7:
+    print("I love weekends!")
+```
+
+You can add `if` statements as an extra condition check:
+
+```{python match5, exercise = TRUE}
+month = 5
+day = 4
+match day:
+  case 1 | 2 | 3 | 4 | 5 if month == 4:
+    print("A weekday in April")
+  case 1 | 2 | 3 | 4 | 5 if month == 5:
+    print("A weekday in May")
+  case _:
+    print("No match")
+```
+
 ### While Loop
 With the `while` loop we can execute a set of statements as long as a condition is true.
 
-```{python whileloop1, exercise=TRUE}
+```{python whileloop1, exercise = TRUE}
 i = 1 # define an indexing variable and set to initial value as 1
 while i < 6:
   print(i)
@@ -677,7 +750,7 @@ while i < 6:
 
 With the `break` statement we can stop the loop even if the while condition is true:
 
-```{python whileloop2, exercise=TRUE}
+```{python whileloop2, exercise = TRUE}
 i = 1
 while i < 6:
   print(i)
@@ -690,7 +763,7 @@ while i < 6:
 
 With the `continue` statement we can stop the current iteration, and continue with the next:
 
-```{python whileloop3, exercise=TRUE}
+```{python whileloop3, exercise = TRUE}
 i = 0
 while i < 6:
   i += 1
@@ -703,7 +776,7 @@ while i < 6:
 
 With the `else` statement we can run a block of code once when the condition no longer is true:
 
-```{python whileloop4, exercise=TRUE}
+```{python whileloop4, exercise = TRUE}
 i = 1
 while i < 6:
   print(i)
@@ -720,7 +793,7 @@ There are multiple ways to use `for` loops.
 
 #### Iterating Over a List:
 
-```{python forloop1, exercise=TRUE}
+```{python forloop1, exercise = TRUE}
 list_of_fruits = ["apple", "banana", "cherry"]
 
 for fruits in list_of_fruits:
@@ -731,7 +804,7 @@ for fruits in list_of_fruits:
 
 You can also use `enumerate` to iterate over a sequence and get the index position of each item:
 
-```{python forloop2, exercise=TRUE}
+```{python forloop2, exercise = TRUE}
 list_of_fruits = ["apple", "banana", "cherry"]
 
 for index, fruits in enumerate(list_of_fruits):
@@ -742,7 +815,7 @@ for index, fruits in enumerate(list_of_fruits):
 
 Iterating over a string with `print()` can print each character in the string in order:
 
-```{python forloop3, exercise=TRUE}
+```{python forloop3, exercise = TRUE}
 for char in "Python":
     print(char)
 ```
@@ -755,21 +828,21 @@ The `range()` function returns a sequence of numbers, starting from index 0 by d
 
 Note that `range(6)` is not the values of 0 to 6, but the values 0 to 5.
 
-```{python forloop4, exercise=TRUE}
+```{python forloop4, exercise = TRUE}
 for i in range(6):
     print(i)
 ```
 
 The `range()` function defaults to 0 as a starting value, however it is possible to specify the starting value by adding a parameter: `range(2, 6)`, which means values from 2 to 6 (but not including 6):
 
-```{python forloop5, exercise=TRUE}
+```{python forloop5, exercise = TRUE}
 for i in range(2, 6):
     print(i)
 ```
 
 The `range()` function defaults to increment the sequence by 1, however it is possible to specify the increment value by adding a third parameter: `range(2, 30, 3)`:
 
-```{python forloop6, exercise=TRUE}
+```{python forloop6, exercise = TRUE}
 for i in range(2, 30, 3):
     print(i)
 ```
@@ -780,7 +853,7 @@ With the `break` statement we can stop the loop before it has looped through all
 
 Exit the loop when x is "banana":
 
-```{python break1, exercise=TRUE}
+```{python break1, exercise = TRUE}
 fruits = ["apple", "banana", "cherry"]
 for x in fruits:
   print(x)
@@ -790,7 +863,7 @@ for x in fruits:
 
 Exit the loop when x is "banana", but this time the break comes before the print:
 
-```{python break2, exercise=TRUE}
+```{python break2, exercise = TRUE}
 fruits = ["apple", "banana", "cherry"]
 for x in fruits:
   if x == "banana":
@@ -804,7 +877,7 @@ It would not print "banana" as the loop has already been exit when x equals to "
 
 With the `continue` statement we can stop the current iteration of the loop, and continue with the next:
 
-```{python continue, exercise=TRUE}
+```{python continue, exercise = TRUE}
 fruits = ["apple", "banana", "cherry"]
 for x in fruits:
   if x == "banana":
@@ -816,7 +889,7 @@ It would not print "banana" as the loop was stopped when x equals to "banana", a
 
 #### Nested Loops
 
-```{python forloop7, exercise=TRUE}
+```{python forloop7, exercise = TRUE}
 adjective = ["small", "big", "tasty"]
 fruits = ["apple", "banana", "cherry"]
 
@@ -848,14 +921,14 @@ def function_name():
 
 Example:
 
-```{python function2, exercise=TRUE}
+```{python function2, exercise = TRUE}
 def greet():
   print("Hello!")
 ```
 
 When you run the above code, you will see that nothing is output - this is because the function has not been called.
 
-```{python function3, exercise=TRUE}
+```{python function3, exercise = TRUE}
 def greet():
   print("Hello!")
 
@@ -868,7 +941,7 @@ Parameters are variables which are listed inside the parentheses in the function
 
 The values passed into a function are called arguments. 
 
-```{python function4, exercise=TRUE}
+```{python function4, exercise = TRUE}
 def greet(name): # set the parameter as name
   print("Hello, " + name + "!")
   
@@ -877,7 +950,7 @@ greet("Bob") # argument as Bob
 
 You can also pass through multiple arguments:
 
-```{python function5, exercise=TRUE}
+```{python function5, exercise = TRUE}
 def add(a, b, c):
   print(a + b + c)
   
@@ -888,7 +961,7 @@ result = add(1, 2, 3)
 
 The return statement can optionally be used to return the data back to the caller.
 
-```{python function6, exercise=TRUE}
+```{python function6, exercise = TRUE}
 def add(a, b, c):
   return a + b + c
   
