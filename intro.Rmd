@@ -1572,20 +1572,19 @@ borders.head(10)
 
 ### Group By and Aggregate
 
-The `groupby()` function in Pandas allows us to split a Dataframe into groups based on one or more keys, such as column values, and then perform operations on them, such as aggregations or transformations:
+The `groupby()` function in Pandas allows us to split a Dataframe into groups based on one or more columns, and then perform operations on other specific columns.
 
 ```{python groupby, eval = FALSE, echo = TRUE}
 df.groupby('column_name')
 ```
 
-Read in the `borders_inc_age` csv. Then, apply the `groupby()` function to the `HospitalCode` column.
+Let's apply the `groupby()` function to the `HospitalCode` column.
 
 ```{python groupby-exercise, exercise = TRUE, exercise.setup = "pandas-setup"}
-borders = pd.read_csv("data/borders_inc_age.csv")
 borders.groupby('HospitalCode')
 ```
 
-After assigning `groupby()` function to a new variable, we can apply the aggregate `agg()` function to conduct operations on specific columns.
+The column will become a "groupby" object. After assigning this object to a new variable, we can apply the aggregate `agg()` function to conduct operations on specific columns.
 
 ```{python aggregate1, eval = FALSE, echo = TRUE}
 grouped_variable.agg({'column' : 'function'})
